@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from django.views.generic import View
 from django.http import JsonResponse
+from docx_scripts.add_page_numbers import set_page_numbers
 from docx_scripts.headings import get_headings
 from django.conf import settings
 import json
@@ -33,5 +34,6 @@ class Upload(View):
 class ProcessView(View):
     def post(self, request, *args, **kwargs):
         page_specifications = json.loads(request.body)
+        numbered_file_path = set_page_numbers(page_specifications)
 
-        return None
+        return JsonResponse(numbered_file_path, safe=False)

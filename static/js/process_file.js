@@ -6,8 +6,7 @@ $(document).ready(function () {
         data.heading = $('#heading_input').text();
         data.position = $('#number_position').val();
         data.style = $('#number_style').val();
-
-        console.log(data);
+        data.file_name = $('#file_name').text();
 
 
         $.ajax({
@@ -18,7 +17,10 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
-                console.log('Processed');
+                console.log(data);
+                let download_link =  $("#download_link")
+                download_link.attr("href", baseUrl + data);
+                download_link.show();
 
             },
             error: function (data) {
