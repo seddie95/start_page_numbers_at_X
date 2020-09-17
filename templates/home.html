@@ -1,0 +1,55 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- jQuery javascript urls -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
+
+    {# Set the BaseURL and retrieve csrf token #}
+    <script>
+        let getUrl = window.location;
+        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split("/")[1];
+
+        // get the csrf token
+        function getCsrf() {
+            return $("input[name='csrfmiddlewaretoken']").val();
+        }
+    </script>
+    <!--Local javascript files-->
+    <script src="{% static 'js/upload_file.js' %}"></script>
+    <script src="{% static 'js/process_file.js' %}"></script>
+</head>
+<body>
+<h1>Set Page Number</h1>
+<h2>Upload</h2>
+<form method="post" enctype="multipart/form-data" id="upload_form">
+    {% csrf_token %}
+    <input type="file" name="document" accept=".docx,.doc">
+    <button type="submit">Upload File</button>
+</form>
+<div id="heading_list">
+</div>
+<form id="style_form">
+    <input type="text" placeholder="Heading" id="heading_input">
+    <select id="number_position" name="number_position">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+
+    </select>
+    <select id="number_style" name="number_style">
+        <option value="">1, 2, 3,...</option>
+        <option value="lowerRoman">i, ii, iii,...</option>
+        <option value="lowerLetter">a, b, c,...</option>
+        <option value="upperLetter">A, B, C,...</option>
+        <option value="ordinal">1st, 2nd, 3rd, ...</option>
+        <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
+    </select>
+    <button type="submit">Set Page Numbers</button>
+
+</form>
+</body>
+</html>
