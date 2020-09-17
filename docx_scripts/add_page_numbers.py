@@ -2,8 +2,6 @@ from docx import Document
 from docx.oxml import OxmlElement, ns
 
 
-
-
 def create_attribute(element, name, value):
     """ Create attribute for a given element """
     element.set(ns.qn(name), value)
@@ -75,28 +73,30 @@ def set_page_size(sect1, sect2):
     sect1.footer_distance = sect2.footer_distance
 
 
+def set_page_numbers():
+    # Open existing and find last paragraph before section break
+    doc = Document('../word_documents/steve.docx')
+
+    # Set the page number type so that it starts from one
+    sect = doc.sections[0]._sectPr
+    pgNumType = set_page_number_type()
+    sect.append(pgNumType)
+
+    # add numbers starting at i
+    last = doc.paragraphs[77]
+    new_paragraph = last.insert_paragraph_before()
+    add_section(new_paragraph, 'lowerRoman')
+
+    # set the page to be A4
+    set_page_size(doc.sections[0], doc.sections[1])
+
+    # Add the page numbers
+    add_page_number(doc.sections[0].footer.paragraphs[0], 'center')
+
+    # Save a copy of the file with the page numbers
+    file_name = '../word_documents/steve_new.docx'
+    doc.save(file_name)
+
+
 if __name__ == '__main__':
-    print(get_headings(r'C:\Users\sed\PycharmProjects\specific_page\media\test.docx'))
-    # # Open existing and find last paragraph before section break
-    # doc = Document('../word_documents/steve.docx')
-    #
-    # # Set the page number type so that it starts from one
-    # sect = doc.sections[0]._sectPr
-    # pgNumType = set_page_number_type()
-    # sect.append(pgNumType)
-    #
-    # # add numbers starting at i
-    # last = doc.paragraphs[77]
-    # new_paragraph = last.insert_paragraph_before()
-    # add_section(new_paragraph, 'lowerRoman')
-    #
-    # # set the page to be A4
-    # set_page_size(doc.sections[0], doc.sections[1])
-    #
-    # # Add the page numbers
-    # add_page_number(doc.sections[0].footer.paragraphs[0], 'center')
-    #
-    # # Save a copy of the file with the page numbers
-    # file_name = '../word_documents/steve_new.docx'
-    # doc.save(file_name)
-    # os.system(f'start {file_name}')
+    pass

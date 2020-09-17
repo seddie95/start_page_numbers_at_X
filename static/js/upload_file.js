@@ -11,9 +11,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data) {
+
+                $('#file_name').text(data['file_name'])
+
                 let heading_list = "<ul>"
                 for (const [key, value] of Object.entries(data)) {
-                    heading_list += `<li id="heading_${value}" value="${value}">${key}</li>`
+                    if (key !== 'file_name') {
+                        heading_list += `<li id="heading_${value}" value="${value}">${key}</li>`
+                    }
                 }
                 heading_list += "</ul>"
 
