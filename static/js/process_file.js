@@ -23,6 +23,8 @@ $(document).ready(function () {
                 let download_link = $("#download_link")
                 download_link.attr("href", baseUrl + data);
                 download_link.show();
+                $('#bullets').hide();
+                $('#item_3').show();
             },
             error: function (data) {
                 console.error('Difficulty parsing response');

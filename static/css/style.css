@@ -19,12 +19,26 @@ header {
 
 }
 
+#file_name {
+    display: none;
+}
+
 #upload {
 
 }
 
 #heading_list {
 
+}
+
+#heading_list li {
+    list-style-type: none;
+
+}
+
+#heading_list li:hover {
+    color: blue;
+    cursor: pointer;
 }
 
 #heading_input {
@@ -45,4 +59,21 @@ header {
 
 #download_link {
 
+}
+
+#style_form {
+    display: none;
+}
+
+/*Instruction items*/
+#item_2 {
+    display: none;
+}
+
+#bullets {
+    display: none;
+}
+
+#item_3 {
+    display: none;
 }

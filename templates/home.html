@@ -31,9 +31,24 @@
 
 <!--Header section-->
 <header class="header">
-        <h1>Page Numbers at <span class="color">X</span></h1>
+    <h1>Page Numbers at <span class="color">X</span></h1>
 </header>
-
+<p>To allow this software to number your page starting from a specific page please
+    follow the following instructions </p>
+<ul>
+    <li id="item_1"> Upload a word document which contains headings.</li>
+    <li id="item_2"> Select one of the headings that is returned by clicking on it, which will be the heading for
+        the starting page.
+    </li>
+    <div id="bullets">
+        <li> Select the position of the numbers on the page, default is left</li>
+        <li> Select the number format for the first section of the document</li>
+        <li>Click the Set Page Number button</li>
+    </div>
+    <li id="item_3">Download your numbered file after it has been processed.
+        Please not that all files will be deleted after 2 minutes.
+    </li>
+</ul>
 <!--Main body Section-->
 <form method="post" enctype="multipart/form-data" id="upload_form">
     {% csrf_token %}

@@ -32,7 +32,16 @@ $(document).ready(function () {
                     let heading_input = $('#heading_input');
                     heading_input.text($(this).val());
                     heading_input.val($(this).text());
+                    $('#item_2').hide();
+                    $('#bullets').show();
+                    $('#style_form').show();
+
                 });
+
+                //display/hide instructions
+                $('#upload_form').hide();
+                $('#item_1').hide();
+                $('#item_2').show();
 
             },
             error: function (data) {
