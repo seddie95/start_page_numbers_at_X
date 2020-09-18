@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
     <!-- jQuery javascript urls -->
     <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
@@ -22,13 +25,19 @@
     <script src="{% static 'js/upload_file.js' %}"></script>
     <script src="{% static 'js/process_file.js' %}"></script>
 </head>
+
+
 <body>
-<h1>Set Page Number</h1>
-<h2>Upload</h2>
+
+<!--Header section-->
+<header class="header">
+        <h1>Page Numbers at <span class="color">X</span></h1>
+</header>
+
+<!--Main body Section-->
 <form method="post" enctype="multipart/form-data" id="upload_form">
     {% csrf_token %}
-    <input type="file" name="document" accept=".docx,.doc">
-    <button type="submit">Upload File</button>
+    <input type="file" name="document" accept=".docx,.doc" id="file">
 </form>
 <div id="heading_list">
 </div>
@@ -49,7 +58,7 @@
         <option value="ordinal">1st, 2nd, 3rd, ...</option>
         <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
     </select>
-    <button type="submit">Set Page Numbers</button>
+    <button type="submit" id="process">Set Page Numbers</button>
     <a id='download_link' href="path_to_file" download="proposed_file_name" style="display: none">Download</a>
 </form>
 </body>

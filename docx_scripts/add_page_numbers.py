@@ -4,6 +4,7 @@ from django.conf import settings
 from docx.shared import Mm
 import os
 
+
 def create_attribute(element, name, value):
     """ Create attribute for a given element """
     element.set(ns.qn(name), value)
