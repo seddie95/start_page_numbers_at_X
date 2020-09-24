@@ -207,6 +207,11 @@ li:hover {
 }
 
 
+#download_btn a {
+    text-decoration: none;
+    color: white;
+}
+
 #headings {
     width: 500px;
     max-height: 500px;

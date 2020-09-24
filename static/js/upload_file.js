@@ -113,3 +113,4 @@ function restart() {
     // Reload the page
     location.reload();
 }
+

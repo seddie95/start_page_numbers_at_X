@@ -25,7 +25,7 @@ $(document).ready(function () {
                     // Set the download link to the returned sting and display it
 
                     // Resize the content container so it can allow for two columns
-                     $(".content").css({"width": "720px", "justify-content": "space-between"});
+                    $(".content").css({"width": "720px", "justify-content": "space-between"});
                     $('#style_form').hide();
                     $('#heading_list').hide();
                     $("#download_link").attr("href", baseUrl + data);
