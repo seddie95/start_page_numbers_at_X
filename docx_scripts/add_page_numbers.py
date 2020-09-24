@@ -64,16 +64,16 @@ def add_page_number(parag, position=''):
     run._r.append(fldChar2)
 
 
-def set_page_size(section):
+def set_page_size(sect1, sect2):
     """ Ensure that both sections have the same size"""
-    section.page_height = Mm(297)
-    section.page_width = Mm(210)
-    section.left_margin = Mm(25.4)
-    section.right_margin = Mm(25.4)
-    section.top_margin = Mm(25.4)
-    section.bottom_margin = Mm(25.4)
-    section.header_distance = Mm(12.7)
-    section.footer_distance = Mm(12.7)
+    sect1.page_height = sect2.page_height
+    sect1.page_width = sect2.page_width
+    sect1.left_margin = sect2.left_margin
+    sect1.right_margin = sect2.right_margin
+    sect1.top_margin = sect2.top_margin
+    sect1.bottom_margin = sect2.bottom_margin
+    sect1.header_distance = sect2.header_distance
+    sect1.footer_distance = sect2.footer_distance
 
 
 def set_page_numbers(specs):
@@ -88,30 +88,35 @@ def set_page_numbers(specs):
     path = media_root + "\\" + file_name
 
     # Open existing and find last paragraph before section break
-    doc = Document(path)
+    try:
+        if os.path.exists(path):
+            doc = Document(path)
+            # Set the page number type so that it starts from one
+            sect = doc.sections[0]._sectPr
+            pgNumType = set_page_number_type()
+            sect.append(pgNumType)
 
-    # Set the page number type so that it starts from one
-    sect = doc.sections[0]._sectPr
-    pgNumType = set_page_number_type()
-    sect.append(pgNumType)
+            # add numbers starting at i
+            chosen_paragraph = doc.paragraphs[paragraph_number - 1]
+            new_paragraph = chosen_paragraph.insert_paragraph_before()
+            add_section(new_paragraph, style)
 
-    # add numbers starting at i
-    chosen_paragraph = doc.paragraphs[paragraph_number - 1]
-    new_paragraph = chosen_paragraph.insert_paragraph_before()
-    add_section(new_paragraph, style)
+            # set the page to be A4
+            set_page_size(doc.sections[0], doc.sections[1])
 
-    # set the page to be A4
-    set_page_size(doc.sections[0])
-    set_page_size(doc.sections[1])
+            # Add the page numbers
+            add_page_number(doc.sections[0].footer.paragraphs[0], position)
 
-    # Add the page numbers
-    add_page_number(doc.sections[0].footer.paragraphs[0], position)
+            # Save a copy of the file with the page numbers
+            saved_file = f'media/numbered_{file_name}'
+            doc.save(saved_file)
 
-    # Save a copy of the file with the page numbers
-    saved_file = f'media/numbered_{file_name}'
-    doc.save(saved_file)
+            # Delete original file
+            os.remove(path)
 
-    # Delete original file
-    os.remove(path)
+            return saved_file
+        else:
+            return 'File does not exist!'
 
-    return saved_file
+    except OSError:
+        return 'Unable to load document!\nPlease try uploading again.'

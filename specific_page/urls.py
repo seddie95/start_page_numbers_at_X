@@ -26,8 +26,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload/', views.Upload.as_view(), name='upload'),
     path('process/', views.ProcessView.as_view(), name='process'),
-]
+    path('test/', views.TestView.as_view(), name='test'),
+    path('delete/', views.DeleteView.as_view(), name='delete'),
 
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

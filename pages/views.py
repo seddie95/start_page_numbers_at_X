@@ -7,6 +7,7 @@ from docx_scripts.headings import get_headings
 from django.conf import settings
 import json
 import urllib.parse
+import os
 
 
 class Home(TemplateView):
@@ -37,3 +38,17 @@ class ProcessView(View):
         numbered_file_path = set_page_numbers(page_specifications)
 
         return JsonResponse(numbered_file_path, safe=False)
+
+
+class TestView(TemplateView):
+    template_name = 'test.html'
+
+
+class DeleteView(View):
+    def post(self, request, *args, **kwargs):
+        file_name = json.loads(request.body)
+        media_root = settings.MEDIA_ROOT
+        path = media_root + "\\" + file_name
+        os.remove(path)
+
+        return JsonResponse('Removed file from server ', safe=False)
