@@ -1,13 +1,14 @@
+from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from django.core.files.storage import FileSystemStorage
 from django.views.generic import View
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from docx_scripts.add_page_numbers import set_page_numbers
 from docx_scripts.headings import get_headings
 from django.conf import settings
 import json
-import urllib.parse
 import os
+from .forms import FileForm
+from .models import WordDoc
 
 
 class Home(TemplateView):
@@ -15,36 +16,59 @@ class Home(TemplateView):
 
 
 class Upload(View):
+    def get(self, request, *args, **kwargs):
+        form = FileForm()
+
+        return render(request, 'home.html', {
+            'form': form
+        })
+
     def post(self, request, *args, **kwargs):
-        # obtain Post request and save it as a document in the media folder
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        file = fs.save(uploaded_file.name, uploaded_file)
-        file_name = urllib.parse.unquote(fs.url(file)).split('/')[-1]
+        form = FileForm(request.POST, request.FILES)
 
-        # Get the path for the file and retrieve the headings
-        media_root = settings.MEDIA_ROOT
+        if form.is_valid():
+            doc = form.save(commit=False)
 
-        path = media_root + "\\" + file_name
-        headings = get_headings(path, 'Heading 1')
-        headings['file_name'] = file_name
+            # Set the objects file name equal to the original filename
+            doc.file_name = request.FILES['doc_file'].name
+            doc.save()
 
-        return JsonResponse(headings, safe=False)
+            path = doc.doc_file.path
+
+            headings = get_headings(path, 'Heading 1')
+            headings['primary_key'] = doc.pk
+
+            return render(request, 'process.html', {
+                'headings': headings
+            })
 
 
 class ProcessView(View):
     def post(self, request, *args, **kwargs):
-        page_specifications = json.loads(request.body)
-        numbered_file_path = set_page_numbers(page_specifications)
+        # Retrieve settings for page numbering
+        pk = request.POST.get('pk')
+        doc_obj = WordDoc.objects.get(pk=pk)
 
-        return JsonResponse(numbered_file_path, safe=False)
+        page_specs = dict(request.POST.lists())
+        page_specs['doc_obj'] = doc_obj
 
+        path = set_page_numbers(page_specs)
 
-class TestView(TemplateView):
-    template_name = 'test.html'
+        return render(request, 'download.html', {
+            'path': path
+        })
 
 
 class DeleteView(View):
+    def post(self, request, *args, **kwargs):
+        pk = json.loads(request.body)
+        doc_obj = WordDoc.objects.get(pk=pk)
+        doc_obj.delete()
+
+        return JsonResponse('Removed file from server ', safe=False)
+
+
+class DeleteNumberedView(View):
     def post(self, request, *args, **kwargs):
         file_name = json.loads(request.body)
         media_root = settings.MEDIA_ROOT

@@ -1,103 +1,20 @@
-{% load static %}<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base.html' %}
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% block body %}
 
-    <!--    Google font-->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Open+Sans:wght@300&display=swap"
-          rel="stylesheet">
+    <div id="welcome">
+        <h2>Start Page Numbering @ Specific Page</h2>
+        <h3>Select where the page numbering should start in a Word document</h3>
 
-    <!-- jQuery javascript urls -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
-
-    {# Set the BaseURL and retrieve csrf token #}
-    <script>
-        let getUrl = window.location;
-        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split("/")[1];
-
-        // get the csrf token
-        function getCsrf() {
-            return $("input[name='csrfmiddlewaretoken']").val();
-        }
-    </script>
-    <!--Local javascript files-->
-    <script src="{% static 'js/upload_file.js' %}"></script>
-    <script src="{% static 'js/process_file.js' %}"></script>
-</head>
-
-
-<body>
-
-<!--Header section-->
-<header class="header">
-    <h1 onclick='restart()'>Numbering <span class="color">@</span></h1>
-</header>
-<div class="container">
-    <div class="content">
-
-        <div id="welcome">
-            <h2>Start Page Numbering @ Specific Page</h2>
-            <h3>Select where the page numbering should start in a Word document</h3>
-
-            <!-- Upload Form-->
-            <form method="post" enctype="multipart/form-data" id="upload_form">
-                {% csrf_token %}
-                <label class="myLabel" title="Upload a file to be numbered">
-                    <input type="file" name="document" accept=".docx,.doc" id="file"/>
+        <!-- Upload Form-->
+        <form method="post" enctype="multipart/form-data" id="upload_form">
+            {% csrf_token %}
+             <label class="myLabel" title="Upload a file to be numbered">
+                    {{ form }}
                     <span>Upload Word File</span>
                 </label>
-            </form>
-        </div>
-
-        <!-- filename of processes-->
-        <h3 id="file_name"></h3>
-
-        <!--  div to hold document headings-->
-        <div id="heading_list"></div>
-
-        <!-- Page style form-->
-        <form id="style_form">
-            <h3>Select page numbering settings</h3>
-            <label for="headings">Headings</label>
-            <input type="text" placeholder="Heading" id="heading_input" autocomplete="off"
-                   title="Select the a heading from the list on the left ">
-
-            <label for="position">Page Position</label>
-            <select id="number_position" name="number_position" title="Select the position of the numbers on the page">
-                <option value="left">Left</option>
-                <option value="center">Center</option>
-                <option value="right">Right</option>
-
-            </select>
-            <label for="numbering">Numbering Style</label>
-            <select id="number_style" name="number_style" title="Select the number style for the first section">
-                <option value="">1, 2, 3,...</option>
-                <option value="lowerRoman">i, ii, iii,...</option>
-                <option value="lowerLetter">a, b, c,...</option>
-                <option value="upperLetter">A, B, C,...</option>
-                <option value="ordinal">1st, 2nd, 3rd, ...</option>
-                <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
-            </select>
-            <button type="submit" id="process" title="Submit file to be numbered">Set Page Numbers</button>
-
+{#            <button type="submit">Upload</button>#}
         </form>
-
-        <!-- Download section-->
-        <div id="download_section">
-            <h2>Your file is now ready to be downloaded</h2>
-            <h3>Please note all files will automatically be deleted after 2 minutes.</h3>
-            <button id="download_btn"><a id='download_link' href='path_to_file' download='proposed_file_name'
-                                         title="Download the numbered word file">
-                Download File</a></button>
-        </div>
-
-
     </div>
-</div>
-</body>
-</html>
+
+{% endblock body %}

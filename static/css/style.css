@@ -40,6 +40,7 @@ h3 {
     color: #4d4d4d;
     font-size: 22px;
     margin-bottom: 40px;
+    /*padding-right: 100px;*/
 
 }
 
@@ -72,7 +73,7 @@ header {
 }
 
 .content {
-    width: 40%;
+    width: 968px;
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -109,11 +110,6 @@ label.myLabel input[type="file"] {
 }
 
 
-#style_form {
-    display: none;
-}
-
-
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -141,10 +137,6 @@ button[type=submit] {
 
 button[type=submit]:hover {
     background-color: #222222;
-}
-
-#page_settings {
-    display: none;
 }
 
 
@@ -185,7 +177,6 @@ li:hover {
 }
 
 #download_section {
-    display: none;
     text-align: center;
 }
 
@@ -212,9 +203,14 @@ li:hover {
     color: white;
 }
 
+#headings_list{
+    margin-right:400px;
+}
+
+
 #headings {
-    width: 500px;
-    max-height: 500px;
+    width: 450px;
+    max-height: 300px;
     overflow-y: auto;
 }
 
@@ -240,3 +236,10 @@ li:hover {
     display: inline-block;
 }
 
+#pk {
+    display: none;
+}
+
+#page_settings{
+    padding-left: 200px;
+}

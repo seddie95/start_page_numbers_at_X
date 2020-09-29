@@ -18,16 +18,14 @@ from django.urls import path
 from pages import views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import url
-from django.views.static import serve
 
 urlpatterns = [
-    path('', views.Home.as_view(), name='home'),
+    # path('', views.Home.as_view(), name='home'),
     path('admin/', admin.site.urls),
-    path('upload/', views.Upload.as_view(), name='upload'),
+    path('', views.Upload.as_view(), name='home'),
     path('process/', views.ProcessView.as_view(), name='process'),
-    path('test/', views.TestView.as_view(), name='test'),
     path('delete/', views.DeleteView.as_view(), name='delete'),
+    path('delete_numbered/', views.DeleteNumberedView.as_view(), name='delete_numbered'),
 
 ]
 

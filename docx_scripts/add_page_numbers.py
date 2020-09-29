@@ -1,7 +1,5 @@
 from docx import Document
 from docx.oxml import OxmlElement, ns
-from django.conf import settings
-from docx.shared import Mm
 import os
 
 
@@ -78,19 +76,21 @@ def set_page_size(sect1, sect2):
 
 def set_page_numbers(specs):
     # Retrieve page specification variables
-    file_name = specs['file_name']
-    paragraph_number = int(specs['heading'])
-    position = specs['position']
-    style = specs['style']
+    # print("===========================")
+    # print(specs)
+    # print("===========================")
 
-    # Obtain the path to the docx file
-    media_root = settings.MEDIA_ROOT
-    path = media_root + "\\" + file_name
+    doc_obj = specs['doc_obj']
+    file_path = doc_obj.doc_file.path
+    file_name = doc_obj.file_name
+    paragraph_number = int(specs['heading'][0])
+    position = specs['position'][0]
+    style = specs['style'][0]
 
     # Open existing and find last paragraph before section break
     try:
-        if os.path.exists(path):
-            doc = Document(path)
+        if os.path.exists(file_path):
+            doc = Document(file_path)
             # Set the page number type so that it starts from one
             sect = doc.sections[0]._sectPr
             pgNumType = set_page_number_type()
@@ -111,8 +111,8 @@ def set_page_numbers(specs):
             saved_file = f'media/numbered_{file_name}'
             doc.save(saved_file)
 
-            # Delete original file
-            os.remove(path)
+            # Delete object from database and server
+            doc_obj.delete()
 
             return saved_file
         else:
