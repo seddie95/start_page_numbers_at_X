@@ -1,0 +1,48 @@
+{% extends 'base.html' %}{% load custom_tags %}
+
+{% block body %}
+
+    <!--  div to hold document headings-->
+    <div id="heading_list">
+        <h3>Select Heading to start page numbering from</h3>
+        <ul class='scrollbar' id='headings'>
+            {% for key,heading in headings.items %}
+                {% if key != 'primary_key' %}
+                    <li value="{{ heading }}">{{ key }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <button class='restart' id="restart" title="Upload a new file">Start Again</button>
+    </div>
+
+    <div id="page_settings">
+        <!-- Page style form-->
+        <form id="style_form" method="post" action="/process/">
+            {% csrf_token %}
+            <h3>Select page numbering settings</h3>
+            <input id="pk" name="pk" value="{{ headings|get_item:"primary_key" }}">
+
+            <label>Paragraph number of Headings</label>
+            <input type="text" placeholder="Heading" id="heading_input" autocomplete="off"
+                   title="Select the a heading from the list on the left" value="" name="heading">
+
+            <label for="position">Page Position</label>
+            <select id="number_position" name="position" title="Select the position of the numbers on the page">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+
+            </select>
+            <label for="numbering">Numbering Style</label>
+            <select id="number_style" name="style" title="Select the number style for the first section">
+                <option value="">1, 2, 3,...</option>
+                <option value="lowerRoman">i, ii, iii,...</option>
+                <option value="lowerLetter">a, b, c,...</option>
+                <option value="upperLetter">A, B, C,...</option>
+                <option value="ordinal">1st, 2nd, 3rd, ...</option>
+                <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
+            </select>
+            <button type="submit" id="process" title="Submit file to be numbered">Set Page Numbers</button>
+        </form>
+    </div>
+{% endblock body %}
