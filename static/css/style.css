@@ -40,8 +40,12 @@ h3 {
     color: #4d4d4d;
     font-size: 22px;
     margin-bottom: 40px;
-    /*padding-right: 100px;*/
 
+}
+
+a {
+    text-decoration: none;
+    color: #003366;
 }
 
 
@@ -67,7 +71,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 100px 20px 20px 20px;
+    padding: 50px 20px 20px 20px;
     background: #d4d4d4;
 
 }
@@ -79,8 +83,8 @@ header {
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 80px 100px;
+    justify-content: space-around;
+    padding: 40px 40px 40px 40px;
 }
 
 
@@ -123,7 +127,6 @@ input[type=text], select {
 }
 
 button[type=submit] {
-    width: 100%;
     background-color: #3875d7;
     color: white;
     padding: 14px 20px;
@@ -133,6 +136,8 @@ button[type=submit] {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    width: 200px;
+
 }
 
 button[type=submit]:hover {
@@ -164,12 +169,13 @@ li:hover {
     background-color: #e31010;
     color: white;
     padding: 14px 20px;
-    margin: 60px 0;
+    margin: 60px 10px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    max-width: 100px;
 }
 
 #restart:hover {
@@ -203,14 +209,10 @@ li:hover {
     color: white;
 }
 
-#headings_list{
-    margin-right:400px;
-}
-
 
 #headings {
     width: 450px;
-    max-height: 300px;
+    max-height: 370px;
     overflow-y: auto;
 }
 
@@ -222,7 +224,7 @@ li:hover {
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 6px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #d4d4d4;
 }
@@ -240,6 +242,71 @@ li:hover {
     display: none;
 }
 
-#page_settings{
-    padding-left: 200px;
+#page_settings {
+    margin-left: 150px;
+}
+
+#page_settings input, select {
+    width: 250px;
+}
+
+.column {
+    flex-direction: column;
+    flex: 1;
+    min-width: 450px;
+    max-width: 500px;
+}
+
+/*Media queries*/
+@media only screen and (max-width: 1024px) {
+    #page_settings {
+        margin: 40px 0 0 0;
+    }
+
+    .content {
+        width: 500px;
+    }
+
+    #headings {
+        width: 600px;
+    }
+}
+
+
+@media only screen and (max-width: 968px) {
+    .content {
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .content {
+        width: 400px;
+    }
+
+    #headings {
+        width: 450px;
+    }
+
+}
+
+@media only screen and (max-width: 520px) {
+    h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        width: 350px;
+    }
+
+    #headings {
+        width: 350px;
+    }
+
+    .column {
+        min-width: 380px;
+
+    }
+
 }

@@ -126,4 +126,3 @@ if (window.history.replaceState) {
 
 
 
-// var href = $("#download_link").attr('href');

@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic import View
 from django.http import JsonResponse, HttpResponseRedirect
@@ -36,6 +37,7 @@ class Upload(View):
             path = doc.doc_file.path
 
             headings = get_headings(path, 'Heading 1')
+            request.session = {**headings, 'primary_key': doc.pk}
             headings['primary_key'] = doc.pk
 
             return render(request, 'process.html', {
@@ -44,6 +46,9 @@ class Upload(View):
 
 
 class ProcessView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'process.html')
+
     def post(self, request, *args, **kwargs):
         # Retrieve settings for page numbering
         pk = request.POST.get('pk')

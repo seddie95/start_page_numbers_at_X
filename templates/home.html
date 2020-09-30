@@ -9,12 +9,18 @@
         <!-- Upload Form-->
         <form method="post" enctype="multipart/form-data" id="upload_form">
             {% csrf_token %}
-             <label class="myLabel" title="Upload a file to be numbered">
-                    {{ form }}
-                    <span>Upload Word File</span>
-                </label>
-{#            <button type="submit">Upload</button>#}
+            <label class="myLabel" title="Upload a file to be numbered">
+                {{ form }}
+                <span>Upload Word File</span>
+            </label>
         </form>
+        <br>
+        <p>This tool uses page headings to break up the document.
+            Please make sure to include <strong>
+                <a href="https://support.microsoft.com/en-us/office/add-a-heading-3eb8b917-56dc-4a17-891a-a026b2c790f2"
+                   target="_blank">
+                    Heading 1</a>
+            </strong> headings</p>
     </div>
 
 {% endblock body %}

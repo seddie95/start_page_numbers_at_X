@@ -75,11 +75,6 @@ def set_page_size(sect1, sect2):
 
 
 def set_page_numbers(specs):
-    # Retrieve page specification variables
-    # print("===========================")
-    # print(specs)
-    # print("===========================")
-
     doc_obj = specs['doc_obj']
     file_path = doc_obj.doc_file.path
     file_name = doc_obj.file_name
