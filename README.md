@@ -6,3 +6,5 @@ This application was designed to make the process of selecting the page to begin
 
 ## Application Instructions
 Before using this application you will be required to have a word document in .docx format.  As it is not possible to determine the page numbers in python docx as it will change when rendered.
+
+![page_settings](hhttps://github.com/seddie95/start_page_numbers_at_X/tree/master/images/page_settings.PNG?raw=true)
