@@ -4,6 +4,9 @@ import time
 
 
 def get_headings(path, heading='Heading'):
+    """Function to retrieve Heading 1 from a word document"""
+
+    # Check whether the file exists
     while not os.path.exists(path):
         time.sleep(1)
 

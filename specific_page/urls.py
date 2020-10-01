@@ -25,8 +25,6 @@ urlpatterns = [
     path('', views.Upload.as_view(), name='home'),
     path('process/', views.ProcessView.as_view(), name='process'),
     path('delete/', views.DeleteView.as_view(), name='delete'),
-    path('delete_numbered/', views.DeleteNumberedView.as_view(), name='delete_numbered'),
-
 ]
 
 if settings.DEBUG:

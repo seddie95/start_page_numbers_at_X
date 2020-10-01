@@ -1,15 +1,13 @@
-from django.shortcuts import redirect, render
-from django.urls import reverse
-from django.views.generic import TemplateView
-from django.views.generic import View
-from django.http import JsonResponse, HttpResponseRedirect
-from docx_scripts.add_page_numbers import set_page_numbers
-from docx_scripts.headings import get_headings
+from django.shortcuts import render
+from django.views.generic import TemplateView, View
+from django.http import JsonResponse
 from django.conf import settings
 import json
 import os
 from .forms import FileForm
 from .models import WordDoc
+from docx_scripts.add_page_numbers import set_page_numbers
+from docx_scripts.headings import get_headings
 
 
 class Home(TemplateView):
@@ -34,8 +32,8 @@ class Upload(View):
             doc.file_name = request.FILES['doc_file'].name
             doc.save()
 
+            # Retrieve the headings for the newly saved file
             path = doc.doc_file.path
-
             headings = get_headings(path, 'Heading 1')
             request.session = {**headings, 'primary_key': doc.pk}
             headings['primary_key'] = doc.pk
@@ -57,6 +55,7 @@ class ProcessView(View):
         page_specs = dict(request.POST.lists())
         page_specs['doc_obj'] = doc_obj
 
+        # Use the specifications to number the page accordingly
         path = set_page_numbers(page_specs)
 
         return render(request, 'download.html', {
@@ -66,18 +65,10 @@ class ProcessView(View):
 
 class DeleteView(View):
     def post(self, request, *args, **kwargs):
+
+        # Retrieve the specific entry and delete it and associated files
         pk = json.loads(request.body)
         doc_obj = WordDoc.objects.get(pk=pk)
         doc_obj.delete()
-
-        return JsonResponse('Removed file from server ', safe=False)
-
-
-class DeleteNumberedView(View):
-    def post(self, request, *args, **kwargs):
-        file_name = json.loads(request.body)
-        media_root = settings.MEDIA_ROOT
-        path = media_root + "\\" + file_name
-        os.remove(path)
 
         return JsonResponse('Removed file from server ', safe=False)

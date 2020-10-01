@@ -9,9 +9,7 @@ from pages.models import WordDoc
 
 
 def remove(file_path):
-    """
-    Remove the file or directory
-    """
+    """ Remove the file or directory"""
     if os.path.isdir(file_path):
         try:
             os.rmdir(file_path)
@@ -26,10 +24,7 @@ def remove(file_path):
 
 
 def cleanup(delete_time, file_path):
-    """
-    Removes files from the passed in path that are older than or equal 
-    to the number_of_days
-    """
+    """ Remove numbered doc files from the path older than 2 minutes"""
     time_in_secs = time.time() - delete_time
     for root, dirs, files in os.walk(file_path, topdown=False):
         for file_ in files:
@@ -44,6 +39,7 @@ def cleanup(delete_time, file_path):
 
 
 def clean_database(delete_time):
+    """ Delete database entries with unprocessed files after 2 minutes"""
     # Obtain the current time and valid time
     current_time = time.time()
     valid_time = current_time - delete_time
