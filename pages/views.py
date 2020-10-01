@@ -34,6 +34,8 @@ class Upload(View):
 
             # Retrieve the headings for the newly saved file
             path = doc.doc_file.path
+
+            # Retrieve only the Heading 1 headings
             headings = get_headings(path, 'Heading 1')
             request.session = {**headings, 'primary_key': doc.pk}
             headings['primary_key'] = doc.pk
@@ -65,7 +67,6 @@ class ProcessView(View):
 
 class DeleteView(View):
     def post(self, request, *args, **kwargs):
-
         # Retrieve the specific entry and delete it and associated files
         pk = json.loads(request.body)
         doc_obj = WordDoc.objects.get(pk=pk)

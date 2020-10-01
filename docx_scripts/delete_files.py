@@ -59,5 +59,5 @@ def clean_database(delete_time):
 if __name__ == "__main__":
     deletion_time = 120
     path = '../media'
-    cleanup(deletion_time, path)
     clean_database(deletion_time)
+    cleanup(deletion_time, path)

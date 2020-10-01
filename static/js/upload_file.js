@@ -7,7 +7,7 @@ $(document).ready(function () {
 
         if (file_type !== 'docx') {
             alert("File format is incorrect!\n" +
-                "Please select a .doc or .docx file.");
+                "Please upload a .docx file.");
             this.value = "";
         }
         // Prevent large file upload
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
         // Retrieve the primary key
         let data = $("#pk").val();
-        
+
         // Delete the file from the server if it exists
         if (data) {
             // Pass file_name to server
@@ -79,4 +79,3 @@ $(document).ready(function () {
         heading_input.val($(this).val());
     });
 });
-

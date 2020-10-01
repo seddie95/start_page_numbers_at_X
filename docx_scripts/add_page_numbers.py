@@ -1,3 +1,4 @@
+import time
 from docx import Document
 from docx.oxml import OxmlElement, ns
 import os
@@ -92,7 +93,7 @@ def set_page_numbers(specs):
             sect.append(pgNumType)
 
             # add numbers starting at i
-            chosen_paragraph = doc.paragraphs[paragraph_number - 1]
+            chosen_paragraph = doc.paragraphs[paragraph_number]
             new_paragraph = chosen_paragraph.insert_paragraph_before()
             add_section(new_paragraph, style)
 
@@ -109,7 +110,11 @@ def set_page_numbers(specs):
             # Delete object from database and server
             doc_obj.delete()
 
-            return saved_file
+            while not os.path.exists(saved_file):
+                time.sleep(1)
+
+            if os.path.isfile(saved_file):
+                return saved_file
         else:
             return 'File does not exist!'
 
