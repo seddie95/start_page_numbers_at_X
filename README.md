@@ -10,7 +10,9 @@ The word documents are edited using the python-docx [python-docx](https://python
 Before using this application you will be required to have a word document in .docx format. Word documents with Heading 1 headings are required, as it is not possible to determine the page numbers in python docx as it will change when rendered.
 
 
-![page_settings](images/page_settings.PNG)
+<p align="center">
+  <img width="750"  src="images/page_settings.PNG">
+</p>
 
 The first option that is required is to choose the heading  as seen above on the left hand side, which will start the new section. This will place the paragraph number corresponding to the selected heading into the input box with the label “Paragraph number of Headings”
 
