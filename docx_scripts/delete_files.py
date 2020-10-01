@@ -1,5 +1,12 @@
 import os
 import time
+import datetime
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "specific_page.settings")
+import django
+
+django.setup()
+from pages.models import WordDoc
 
 
 def remove(file_path):
@@ -37,6 +44,25 @@ def cleanup(delete_time, file_path):
             remove(root)
 
 
+def clean_database(delete_time):
+    # Obtain the current time and valid time
+    current_time = time.time()
+    valid_time = current_time - delete_time
+
+    # Retrieve all of the word doc models
+    docs = WordDoc.objects.all()
+
+    # loop through the models and delete if older than 2 minutes
+    for doc in docs:
+        doc_time = doc.time.timestamp()
+        diff = valid_time - doc_time
+
+        if diff > delete_time:
+            doc.delete()
+
+
 if __name__ == "__main__":
-    days, path = 600, '../media'
-    cleanup(days, path)
+    deletion_time = 120
+    path = '../media'
+    cleanup(deletion_time, path)
+    clean_database(deletion_time)
