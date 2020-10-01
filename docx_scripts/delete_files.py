@@ -1,6 +1,5 @@
 import os
 import time
-import datetime
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "specific_page.settings")
 import django

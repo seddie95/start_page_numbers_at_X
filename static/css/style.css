@@ -76,6 +76,18 @@ header {
 
 }
 
+.main_content {
+    width: 720px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px 40px 40px 40px;
+}
+
+
 .content {
     width: 968px;
     background: white;
@@ -87,7 +99,6 @@ header {
     padding: 40px 40px 40px 40px;
 }
 
-
 /* Buttons and forms*/
 .myLabel {
     border: 1px #3875d7;
@@ -98,9 +109,10 @@ header {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    margin-top: 50px;
     display: block;
-    min-width: 40%
+    justify-content: center;
+    width: 35%;
+    margin: auto;
 }
 
 
@@ -257,36 +269,44 @@ li:hover {
     max-width: 500px;
 }
 
+
 /*Media queries*/
 @media only screen and (max-width: 1024px) {
+
+    h2{
+        font-size: 28px;
+    }
     #page_settings {
         margin: 40px 0 0 0;
     }
 
-    .content {
+    .content, .main_content {
         width: 500px;
     }
 
     #headings {
         width: 600px;
     }
-}
 
-
-@media only screen and (max-width: 968px) {
-    .content {
-        width: 500px;
+    .myLabel {
+        font-size: 22px;
     }
 }
 
+
 @media only screen and (max-width: 640px) {
-    .content {
+    .content, .main_content {
         width: 400px;
     }
 
     #headings {
         width: 450px;
     }
+
+    .myLabel {
+        font-size: 16px;
+    }
+
 
 }
 
@@ -296,7 +316,7 @@ li:hover {
         margin-bottom: 20px;
     }
 
-    .content {
+    .content, .main_content {
         width: 350px;
     }
 
@@ -307,6 +327,10 @@ li:hover {
     .column {
         min-width: 380px;
 
+    }
+
+    .myLabel {
+        font-size: 14px;
     }
 
 }

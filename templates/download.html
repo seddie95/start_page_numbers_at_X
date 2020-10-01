@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-    <div id="download_section">
-        <h2>Your file is now ready to be downloaded</h2>
-        <h3>Please note all files will automatically be deleted after 2 minutes.</h3>
-        <button id="download_btn"><a id='download_link' href='/{{ path }}' download='proposed_file_name'
-                                     title="Download the numbered word file">
-            Download File</a></button>
+    <div class="main_content">
+        <div id="download_section">
+            <h2>Your file is now ready to be downloaded</h2>
+            <h3>Please note all files will automatically be deleted after 2 minutes.</h3>
+            <button id="download_btn"><a id='download_link' href='/{{ path }}' download='proposed_file_name'
+                                         title="Download the numbered word file">
+                Download File</a></button>
+        </div>
     </div>
 
 {% endblock body %}
