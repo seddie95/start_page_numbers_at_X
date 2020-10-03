@@ -1,7 +1,15 @@
 # start_page_numbers_at_X
-This application was designed to make the process of selecting the page to begin numbering a word document much simpler, as Microsoft Word does not provide a straightforward method to achieve this.
+This application was developed to make the process of numbering word files from a specific page much simpler,
+as Microsoft Word does not provide a straightforward method to achieve this. 
 
-The word documents are edited using the python-docx [python-docx](https://python-docx.readthedocs.io/en/latest/) library to manipulate the word documents XML files. The Backend of the webserver has been served using the [Django](https://www.djangoproject.com/) Web Frame Work. The frontend was written with minimal JavaScript and jQuery.
+The Frontend serves the purpose of uploading the word document to the server and providing the users 
+specifications to the backend.
+The Backend is served using the [Django](https://www.djangoproject.com/) Web Framework. Django models are used to create database entries with information about the files including the name, time of upload (For deletion purposes)
+and the path to the saved file.
+
+The word documents are then edited using the  [python-docx](https://python-docx.readthedocs.io/en/latest/) 
+library to manipulate the word documents XML files.  The numbered word files are then made available for
+download by the web application.
 
 ## Application Instructions 
 Before using this application you will be required to have a word document in .docx format. Word documents with Heading 1 headings are required, as it is not possible to determine the page numbers in python docx as it will change when rendered.
