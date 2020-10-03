@@ -25,7 +25,12 @@ Once the user is satisfied, they can then submit the document to be numbered.
 After the file has been processed the numbered word file is returned to the user to be downloaded.
 
 ### Numbering Process
-Heading 1 was chosen for this application as it typically is used to start a new page. If no headings are used then it may be more sutable to implement  lastRenderedPageBreak in order to find a suitable place to add a section break.
+The initial aim when using python-docx was to obtain the page numbers using page breaks. 
+In a word XML file, the “lastRenderedPageBreak” attribute often denotes where one page ends and another starts 
+but this is not always the case and as such should not be depended on. 
+The solution found in this approach was to use page headings to suggest where section breaks should be inserted. 
+All headings were used to begin with but this took up far too much space on the web application when large documents are processed,
+which can lead to confusion on the users part. Users are more likely to want to start numbering from a new section beginning with a “Heading 1”.
 
 # Running Locally
 In order to run this application locall you  follow these steps.
