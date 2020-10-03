@@ -1,7 +1,4 @@
 # start_page_numbers_at_X
-Easily number word docs
-
-## About this project
 This application was designed to make the process of selecting the page to begin numbering a word document much simpler, as Microsoft Word does not provide a straightforward method to achieve this.
 
 The word documents are edited using the python-docx [python-docx](https://python-docx.readthedocs.io/en/latest/) library to manipulate the word documents XML files. The Backend of the webserver has been served using the [Django](https://www.djangoproject.com/) Web Frame Work. The frontend was written with minimal JavaScript and jQuery.
