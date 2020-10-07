@@ -20,12 +20,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('', views.Home.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('', views.Upload.as_view(), name='home'),
     path('process/', views.ProcessView.as_view(), name='process'),
     path('delete/', views.DeleteView.as_view(), name='delete'),
+    path('404/', views.error_404_view, name='404')
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'pages.views.error_404_view'
+
+handler500 = 'pages.views.error_500_view'

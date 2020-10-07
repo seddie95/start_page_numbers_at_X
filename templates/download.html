@@ -3,8 +3,10 @@
 {% block body %}
     <div class="main_content">
         <div id="download_section">
-            <h2>Your file is now ready to be downloaded</h2>
-            <h3>Please note all files will automatically be deleted after 2 minutes.</h3>
+            <div id="title_text">
+                <h2>Your file is now ready to be downloaded</h2>
+                <h3>Please note all files will automatically be deleted after 2 minutes.</h3>
+            </div>
             <button id="download_btn"><a id='download_link' href='/{{ path }}' download='proposed_file_name'
                                          title="Download the numbered word file">
                 Download File</a></button>

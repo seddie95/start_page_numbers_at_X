@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
-from django.conf import settings
 import json
-import os
 from .forms import FileForm
 from .models import WordDoc
 from docx_scripts.add_page_numbers import set_page_numbers
@@ -37,12 +35,19 @@ class Upload(View):
 
             # Retrieve only the Heading 1 headings
             headings = get_headings(path, 'Heading 1')
-            request.session = {**headings, 'primary_key': doc.pk}
-            headings['primary_key'] = doc.pk
 
-            return render(request, 'process.html', {
-                'headings': headings
-            })
+            if bool(headings):
+                request.session = {**headings, 'primary_key': doc.pk}
+                headings['primary_key'] = doc.pk
+
+                return render(request, 'process.html', {
+                    'headings': headings
+                })
+            else:
+                context = 0
+                return render(request, 'home.html', {
+                    'context': context
+                })
 
 
 class ProcessView(View):
@@ -73,3 +78,11 @@ class DeleteView(View):
         doc_obj.delete()
 
         return JsonResponse('Removed file from server ', safe=False)
+
+
+def error_404_view(request, exception):
+    return render(request, "404.html")
+
+
+def error_500_view(request):
+    return render(request, "500.html")

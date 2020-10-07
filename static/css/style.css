@@ -77,7 +77,7 @@ header {
 }
 
 .main_content {
-    width: 720px;
+    width: 760px;
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -125,6 +125,9 @@ label.myLabel input[type="file"] {
     background: #222222;
 }
 
+#welcome h2, h3{
+    text-align: center;
+}
 
 input[type=text], select {
     width: 100%;
@@ -334,3 +337,4 @@ li:hover {
     }
 
 }
+

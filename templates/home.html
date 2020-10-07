@@ -5,8 +5,13 @@
 
 
         <div id="welcome">
-            <h2>Start Page Numbering @ Specific Page</h2>
-            <h3>Select where the page numbering should start in a Word document</h3>
+            {% if context == 0 %}
+                <h2> No headings found! </h2>
+                <h3>Please upload document that contains headings</h3>
+            {% else %}
+                <h2>Start Page Numbering @ Specific Page</h2>
+                <h3>Select where the page numbering should start in a Word document</h3>
+            {% endif %}
 
             <!-- Upload Form-->
             <form method="post" enctype="multipart/form-data" id="upload_form">
@@ -25,5 +30,6 @@
                 </strong> headings</p>
         </div>
     </div>
+
 
 {% endblock body %}

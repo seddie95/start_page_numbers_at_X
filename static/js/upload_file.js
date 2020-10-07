@@ -64,13 +64,6 @@ $(document).ready(function () {
 
 //=============================================================================
 
-// Prevent the resubmission of form data when refreshing page
-if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-}
-
-//=============================================================================
-
 // Function to allow list item to be selected
 $(document).ready(function () {
     $("#heading_list li").click(function () {
@@ -79,3 +72,40 @@ $(document).ready(function () {
         heading_input.val($(this).val());
     });
 });
+
+//=============================================================================
+
+// Prevent the resubmission of form data when refreshing page
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+// Return user to homepage if back button is pressed
+if (performance.navigation.type === 2) {
+
+}
+
+// Return user to homepage if refresh button is pressed
+if (performance.navigation.type === 1) {
+    location.href = '/';
+}
+
+//function to inform that file will be deleted after 2 minutes
+$(window).on('load', function () {
+    setTimeout(function (event) {
+
+        let download_btn = $('#download_btn')
+
+        // Update the text and style of button
+        download_btn.css('background-color', 'gray');
+        download_btn.text('Start Again');
+
+        $('#title_text').html('<h2>File has been deleted!</h2>' +
+            '<h3>Please upload a new file to be numbered.</h3>');
+
+        // Redirect to home when button is clicked
+        download_btn.click(function (event) {
+            event.preventDefault();
+            location.href = '/';
+        })
+    }, 120000);
+})
