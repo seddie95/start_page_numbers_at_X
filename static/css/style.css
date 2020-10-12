@@ -4,18 +4,17 @@
     padding: 0;
 }
 
-html {
-    overflow-x: hidden;
-    height: 100%;
-}
-
-
 body {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     color: #4d4d4d;
     background: #d4d4d4
+}
+
+.wrapper{
+    overflow-x: hidden;
+    height: 100%;
 }
 
 h1 {
@@ -50,6 +49,7 @@ a {
 
 
 header {
+    position: relative;
     text-align: left;
     background: white;
     color: #4a4a4a;
@@ -60,7 +60,7 @@ header {
 
 .color {
     color: #3875d7;
-    font-family: "High Tower Text";
+    font-family: "High Tower Text", serif;
     font-size: 45px;
 
 }

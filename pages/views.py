@@ -44,9 +44,12 @@ class Upload(View):
                     'headings': headings
                 })
             else:
+                # Delete file, pass message and form to homepage
                 context = 0
+                form = FileForm()
+                doc.delete()
                 return render(request, 'home.html', {
-                    'context': context
+                    'context': context, 'form': form
                 })
 
 

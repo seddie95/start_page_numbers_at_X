@@ -14,8 +14,8 @@ from pathlib import Path
 import os
 import json
 
-with open('/etc/config.json') as config_file:
-    config = json.load(config_file)
+# with open('/etc/config.json') as config_file:
+#     config = json.load(config_file)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config['SECRET_KEY']
-
+#SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY = '23e40wdhcxsnkd0qwd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['23.96.82.252','www.numberingat.com','numberingat.com']
+ALLOWED_HOSTS = ['23.96.82.252','www.numberingat.com','numberingat.com','*']
 
 # Application definition
 
