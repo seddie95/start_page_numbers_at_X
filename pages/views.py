@@ -8,11 +8,7 @@ from docx_scripts.add_page_numbers import set_page_numbers
 from docx_scripts.headings import get_headings
 
 
-class Home(TemplateView):
-    template_name = 'home.html'
-
-
-class Upload(View):
+class UploadView(View):
     def get(self, request, *args, **kwargs):
         form = FileForm()
 
@@ -55,7 +51,14 @@ class Upload(View):
 
 class ProcessView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'process.html')
+        """Return users to homepage if they
+        refresh the page or navigate to /process """
+
+        form = FileForm()
+
+        return render(request, 'home.html', {
+            'form': form
+        })
 
     def post(self, request, *args, **kwargs):
         # Retrieve settings for page numbering
@@ -68,9 +71,17 @@ class ProcessView(View):
         # Use the specifications to number the page accordingly
         path = set_page_numbers(page_specs)
 
-        return render(request, 'download.html', {
-            'path': path
-        })
+        if path != 1:
+            return render(request, 'download.html', {
+                'path': path
+            })
+
+        else:
+            # Return form and message if file could not be numbered
+            form = FileForm()
+            return render(request, 'home.html', {
+                'context': path, 'form': form
+            })
 
 
 class DeleteView(View):

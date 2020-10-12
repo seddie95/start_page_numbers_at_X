@@ -119,4 +119,4 @@ def set_page_numbers(specs):
             return 'File does not exist!'
 
     except OSError:
-        return 'Unable to load document!\nPlease try uploading again.'
+        return 1

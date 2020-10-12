@@ -8,6 +8,9 @@
             {% if context == 0 %}
                 <h2> No Headings Found! </h2>
                 <h3>Please upload document that contains headings</h3>
+            {% elif context == 1 %}
+                <h2> Difficulty processing file! </h2>
+                <h3>Please upload again or try a new document.</h3>
             {% else %}
                 <h2>Start Page Numbering @ Specific Page</h2>
                 <h3>Select where the page numbering should start in a Word document</h3>
