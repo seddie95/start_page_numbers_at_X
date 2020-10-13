@@ -70,17 +70,18 @@ class ProcessView(View):
 
         # Use the specifications to number the page accordingly
         path = set_page_numbers(page_specs)
+        file_name = path.split('/')[1]
 
         if path != 1:
             return render(request, 'download.html', {
-                'path': path
+                'path': path, 'file_name': file_name
             })
 
         else:
             # Return form and message if file could not be numbered
             form = FileForm()
             return render(request, 'home.html', {
-                'context': path, 'form': form
+                 'form': form
             })
 
 
