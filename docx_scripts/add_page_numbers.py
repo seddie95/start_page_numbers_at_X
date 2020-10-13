@@ -3,6 +3,8 @@ from docx import Document
 from docx.oxml import OxmlElement, ns
 import os
 
+from specific_page import settings
+
 
 def create_attribute(element, name, value):
     """ Create attribute for a given element """
@@ -104,7 +106,7 @@ def set_page_numbers(specs):
             add_page_number(doc.sections[0].footer.paragraphs[0], position)
 
             # Save a copy of the file with the page numbers
-            saved_file = f'media/numbered_{file_name}'
+            saved_file = f'{settings.MEDIA_ROOT}/numbered_{file_name}'
             doc.save(saved_file)
 
             # Delete object from database and server
@@ -114,7 +116,7 @@ def set_page_numbers(specs):
                 time.sleep(1)
 
             if os.path.isfile(saved_file):
-                return saved_file
+                return f'media/numbered_{file_name}'
         else:
             return 'File does not exist!'
 
