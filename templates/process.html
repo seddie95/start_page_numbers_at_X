@@ -15,6 +15,7 @@
             </ul>
         </div>
 
+
         <div class="column">
             <div id="page_settings">
                 <!-- Page style form-->
@@ -25,8 +26,9 @@
                     <input id="pk" name="pk" value="{{ request.session|get_item:"primary_key" }}">
 
                     <label>Paragraph number of Headings</label>
-                    <input readonly type="text" placeholder="Heading" id="heading_input" autocomplete="off"
-                           title="Select the a heading from the list on the left" value="" name="heading" required>
+                    <input class="readonly" type="text" id="heading_input" placeholder="Heading" name="heading"
+                           title="Select the a heading from the list on the left" required
+                           oninvalid="setCustomValidity('Please choose a heading from the List!')">
 
                     <label for="position">Page Position</label>
                     <select id="number_position" name="position" title="Select the position of the numbers on the page">

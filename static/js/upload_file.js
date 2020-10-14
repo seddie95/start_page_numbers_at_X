@@ -89,6 +89,7 @@ if (performance.navigation.type === 1) {
     location.href = '/';
 }
 
+//=============================================================================
 //function to inform that file will be deleted after 2 minutes
 $(window).on('load', function () {
     setTimeout(function (event) {
@@ -109,3 +110,12 @@ $(window).on('load', function () {
         })
     }, 120000);
 })
+
+//=============================================================================
+// Function to only submit headings by clicking on list of headings
+$(document).ready(function () {
+    $(".readonly").on('keydown paste', function (e) {
+        e.preventDefault();
+    });
+});
+

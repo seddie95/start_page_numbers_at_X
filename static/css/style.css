@@ -12,17 +12,9 @@ body {
     background: #d4d4d4
 }
 
-.wrapper{
+.wrapper {
     overflow-x: hidden;
     height: 100%;
-}
-
-h1 {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-    padding-left: 30px;
-    cursor: pointer;
 }
 
 
@@ -50,12 +42,42 @@ a {
 
 header {
     position: relative;
+    display: block;
+    max-width: 100%;
     text-align: left;
     background: white;
     color: #4a4a4a;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
+header h1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    cursor: pointer;
+    display: inline;
+    padding-left: 40px;
+}
 
+nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    float: right;
+    display: inline;
+    padding-right: 200px;
+}
+
+nav li {
+    position: relative;
+    display: inline-block;
+    list-style-type: none;
+    font-family: "Open Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+    color: #222;
+    padding: 0 1.5rem;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .color {
@@ -125,7 +147,7 @@ label.myLabel input[type="file"] {
     background: #222222;
 }
 
-#welcome h2, h3{
+#welcome h2, h3 {
     text-align: center;
 }
 
@@ -274,11 +296,12 @@ li:hover {
 
 
 /*Media queries*/
-@media only screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
 
-    h2{
+    h2 {
         font-size: 28px;
     }
+
     #page_settings {
         margin: 40px 0 0 0;
     }
@@ -294,10 +317,47 @@ li:hover {
     .myLabel {
         font-size: 22px;
     }
+
+
+    /*nav {*/
+    /*    float: none;*/
+    /*    display: block;*/
+    /*    padding-right: 0;*/
+    /*    background-color: #353535;*/
+    /*}*/
+    /*nav li {*/
+    /*    display: block;*/
+    /*    float: none;*/
+    /*    text-align: center;*/
+    /*    border-bottom: solid 1px #222222 ;*/
+    /*    color:white;*/
+    /*}*/
+
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        padding-bottom: 0;
+    }
+
+    nav {
+        float: None;
+        display: block;
+        padding-right: 0;
+        background-color: #585858;
+        position: center;
+    }
+
+    nav li {
+        display: block;
+        text-align: center;
+        border-bottom: solid 1px #3b3a3a;
+        color: white;
+    }
 }
 
 
-@media only screen and (max-width: 640px) {
+@media screen and (max-width: 640px) {
     .content, .main_content {
         width: 400px;
     }
@@ -313,7 +373,7 @@ li:hover {
 
 }
 
-@media only screen and (max-width: 520px) {
+@media screen and (max-width: 520px) {
     h3 {
         font-size: 18px;
         margin-bottom: 20px;
@@ -335,6 +395,7 @@ li:hover {
     .myLabel {
         font-size: 14px;
     }
+
 
 }
 
