@@ -2,7 +2,6 @@ import time
 from docx import Document
 from docx.oxml import OxmlElement, ns
 import os
-
 from specific_page import settings
 
 
@@ -77,6 +76,24 @@ def set_page_size(sect1, sect2):
     sect1.footer_distance = sect2.footer_distance
 
 
+def save_file(doc, doc_obj, file_name):
+    """ Save a copy of the file with the page numbers """
+    saved_file = f'{settings.MEDIA_ROOT}/numbered_{file_name}'
+    doc.save(saved_file)
+
+    # Delete object from database and server
+    doc_obj.delete()
+
+    while not os.path.exists(saved_file):
+        time.sleep(1)
+
+    if os.path.isfile(saved_file):
+        return f'media/numbered_{file_name}'
+
+    else:
+        return 'File does not exist!'
+
+
 def set_page_numbers(specs):
     doc_obj = specs['doc_obj']
     file_path = doc_obj.doc_file.path
@@ -90,35 +107,32 @@ def set_page_numbers(specs):
         if os.path.exists(file_path):
             doc = Document(file_path)
             # Set the page number type so that it starts from one
-            sect = doc.sections[0]._sectPr
-            pgNumType = set_page_number_type()
-            sect.append(pgNumType)
 
-            # add numbers starting at i
-            chosen_paragraph = doc.paragraphs[paragraph_number]
-            new_paragraph = chosen_paragraph.insert_paragraph_before()
-            add_section(new_paragraph, style)
+            # Add normal page number styling if paragraph is zero
+            if paragraph_number == 0:
+                add_page_number(doc.sections[0].footer.paragraphs[0], position)
 
-            # set the page to be A4
-            set_page_size(doc.sections[0], doc.sections[1])
+                # Save the file and delete unneeded file
+                return save_file(doc, doc_obj, file_name)
 
-            # Add the page numbers
-            add_page_number(doc.sections[0].footer.paragraphs[0], position)
+            else:
+                sect = doc.sections[0]._sectPr
+                pg_num_type = set_page_number_type()
+                sect.append(pg_num_type)
 
-            # Save a copy of the file with the page numbers
-            saved_file = f'{settings.MEDIA_ROOT}/numbered_{file_name}'
-            doc.save(saved_file)
+                # add numbers starting at i
+                chosen_paragraph = doc.paragraphs[paragraph_number]
+                new_paragraph = chosen_paragraph.insert_paragraph_before()
+                add_section(new_paragraph, style)
 
-            # Delete object from database and server
-            doc_obj.delete()
+                # set the page to be A4
+                set_page_size(doc.sections[0], doc.sections[1])
 
-            while not os.path.exists(saved_file):
-                time.sleep(1)
+                # Add the page numbers
+                add_page_number(doc.sections[0].footer.paragraphs[0], position)
 
-            if os.path.isfile(saved_file):
-                return f'media/numbered_{file_name}'
-        else:
-            return 'File does not exist!'
+                # Save the file and delete unneeded file
+                return save_file(doc, doc_obj, file_name)
 
     except OSError:
         return 1

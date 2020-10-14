@@ -1,5 +1,9 @@
 {% extends 'base.html' %}{% load custom_tags %}
 
+{% block head %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% endblock head %}
+
 {% block body %}
     <div class="content">
 
@@ -46,8 +50,10 @@
                         <option value="ordinal">1st, 2nd, 3rd, ...</option>
                         <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
                     </select>
-                    <button type="submit" id="process" title="Submit file to be numbered">Set Page Numbers</button>
-                    <button class='restart' id="restart" title="Upload a new file">Restart</button>
+                    <div id="buttons">
+                        <button type="submit" id="process" title="Submit file to be numbered">Set Page Numbers</button>
+                        <button class="restart" id="restart" title="Restart whole process"><i class="fa fa-refresh fa-2x"></i></button>
+                    </div>
                 </form>
             </div>
         </div>

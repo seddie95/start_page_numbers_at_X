@@ -15,6 +15,9 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
 
+    {% block head %}
+    {% endblock head %}
+
     {# Set the BaseURL and retrieve csrf token #}
     <script>
         let getUrl = window.location;
@@ -33,12 +36,6 @@
 <div class="wrapper">
     <header class="header">
         <h1 class="restart">Numbering <span class="color">@</span></h1>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Help</li>
-            </ul>
-        </nav>
     </header>
     <div class="container">
         {% block body %}

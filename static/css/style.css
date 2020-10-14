@@ -60,26 +60,6 @@ header h1 {
     padding-left: 40px;
 }
 
-nav {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-    float: right;
-    display: inline;
-    padding-right: 200px;
-}
-
-nav li {
-    position: relative;
-    display: inline-block;
-    list-style-type: none;
-    font-family: "Open Sans", "Droid Sans", Helvetica, Arial, sans-serif;
-    color: #222;
-    padding: 0 1.5rem;
-    font-size: 25px;
-    font-weight: bold;
-}
-
 .color {
     color: #3875d7;
     font-family: "High Tower Text", serif;
@@ -171,14 +151,14 @@ button[type=submit] {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
-    width: 200px;
+    width: 220px;
 
 }
 
 button[type=submit]:hover {
-    background-color: #222222;
+   color: #222222;
 }
 
 
@@ -203,8 +183,8 @@ li:hover {
 }
 
 #restart {
-    background-color: #e31010;
-    color: white;
+    background-color: white;
+    color: #2e0303;
     padding: 14px 20px;
     margin: 60px 10px;
     border: none;
@@ -216,17 +196,24 @@ li:hover {
 }
 
 #restart:hover {
-    background-color: #2e0303;
+    color: #e31010;
+
 }
 
 #download_section {
     text-align: center;
 }
 
+#buttons {
+    width: 100%;
+    text-align: center;
+}
+
+
 #download_btn {
     background-color: #3875d7;
     color: white;
-    padding: 14px 40px;
+    padding: 10px;
     margin: 60px 0;
     border: none;
     border-radius: 8px;
@@ -319,40 +306,11 @@ li:hover {
     }
 
 
-    /*nav {*/
-    /*    float: none;*/
-    /*    display: block;*/
-    /*    padding-right: 0;*/
-    /*    background-color: #353535;*/
-    /*}*/
-    /*nav li {*/
-    /*    display: block;*/
-    /*    float: none;*/
-    /*    text-align: center;*/
-    /*    border-bottom: solid 1px #222222 ;*/
-    /*    color:white;*/
-    /*}*/
-
 }
 
 @media screen and (max-width: 900px) {
     header {
         padding-bottom: 0;
-    }
-
-    nav {
-        float: None;
-        display: block;
-        padding-right: 0;
-        background-color: #585858;
-        position: center;
-    }
-
-    nav li {
-        display: block;
-        text-align: center;
-        border-bottom: solid 1px #3b3a3a;
-        color: white;
     }
 }
 
@@ -398,4 +356,5 @@ li:hover {
 
 
 }
+
 
