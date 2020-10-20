@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.UploadView.as_view(), name='home'),
     path('process/', views.ProcessView.as_view(), name='process'),
     path('delete/', views.DeleteView.as_view(), name='delete'),
+    path('help/', views.HelpView.as_view(), name='help'),
     path('404/', views.error_404_view, name='404')
 ]
 

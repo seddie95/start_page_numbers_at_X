@@ -21,7 +21,6 @@ $(document).ready(function () {
 
     })
 })
-
 //=============================================================================
 
 // Function to delete files and reload page
@@ -81,7 +80,7 @@ if (window.history.replaceState) {
 }
 // Return user to homepage if back button is pressed
 if (performance.navigation.type === 2) {
-
+    location.href = '/';
 }
 
 // Return user to homepage if refresh button is pressed

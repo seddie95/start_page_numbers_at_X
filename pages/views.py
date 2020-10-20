@@ -81,7 +81,7 @@ class ProcessView(View):
             # Return form and message if file could not be numbered
             form = FileForm()
             return render(request, 'home.html', {
-                 'form': form
+                'form': form
             })
 
 
@@ -93,6 +93,11 @@ class DeleteView(View):
         doc_obj.delete()
 
         return JsonResponse('Removed file from server ', safe=False)
+
+
+class HelpView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'help.html')
 
 
 def error_404_view(request, exception):

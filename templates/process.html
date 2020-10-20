@@ -1,7 +1,9 @@
-{% extends 'base.html' %}{% load custom_tags %}
+{% extends 'base.html' %}{% load custom_tags %}{% load static %}
 
 {% block head %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--Local javascript files-->
+    <script src="{% static 'js/upload_file.js' %}"></script>
 {% endblock head %}
 
 {% block body %}

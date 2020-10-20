@@ -1,5 +1,8 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %}{% load static %}
+{% block head %}
+    <!--Local javascript files-->
+    <script src="{% static 'js/upload_file.js' %}"></script>
+{% endblock head %}
 {% block body %}
     <div class="main_content">
         <div id="download_section">
