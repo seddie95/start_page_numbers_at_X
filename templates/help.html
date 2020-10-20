@@ -5,26 +5,34 @@
         <div id="help_section">
 
             <h2>Help Page</h2>
+            The below sections will describe the processes involved for ensuring that your word file is ready to be
+            numbered and the steps involved in numbering the document.
+
             <h3>Save file as .docx</h3>
             <p>In order for this application to function correctly, you must ensure that your document is in the
                 docx format. To do this, click on File - Save As and then from the dropdown list choose the .docx
                 format for Microsoft (This is the default for Microsoft Word) Then click save. </p>
             <p><img src="{% static 'images/save.PNG' %}" id="rectangle"></p>
             <h3>Add Headings to word document</h3>
-            <p> For the purpose of deciding where to start page numbering in your document “Heading 1” headings are
-                required. To add a “Heading 1” heading go to the Home tab, and in the style section click on
-                “Heading 1”, then type in the name of your heading. Once your headings are added save your file as a
+            <p> For the purpose of deciding where to start page numbering in your document <strong>Heading 1</strong>
+                headings are
+                required. To add a <strong>Heading 1</strong> heading go to the Home tab, and in the style section
+                click on
+                <strong>Heading 1</strong>, then type in the name of your heading. Once your headings are added save
+                your file as a
                 .docx file. </p>
             <p><img src="{% static 'images/headings.PNG' %}" id="rectangle"></p>
             <h3>Numbering word document on Numberingat.com </h3>
-            <p> On the homepage, click on the “Upload Word File button”. This should bring up an explorer, navigate
+            <p> On the homepage, click on the <strong>Upload Word File button</strong>. This should bring up an
+                explorer, navigate
                 to your chosen file. Select the file and click Open. </p>
             <p><img src="{% static 'images/upload.PNG' %}" id="rectangle"></p>
             <h4>Select Heading for numbering page</h4>
             <p>This will bring you to the Settings page. On
                 the left-hand side, it will show the documents headings. Choose which heading will start the page
                 numbering from. Once selected, the paragraph number corresponding to the selected heading will be
-                shown in the top text box on the right. </p>
+                shown in the top text box on the right. Please note that if your chosen heading is the first paragraph
+                in the document then the document will only have one section.</p>
             <p><img src="{% static 'images/select_heading.PNG' %}" id="rectangle"></p>
             <h4>Select numbering position</h4>
             <p>The page position drop down denotes where at the bottom of the page the numbers will be positioned,
@@ -35,11 +43,13 @@
                 document (often journal style documents, will have Roman numerals). The main section of the document
                 will be numbered using ordinal numbers (1, 2, 3...). </p>
             <p><img src="{% static 'images/numbering_style.PNG' %}" id="square" class="center"></p>
-            <p>Once you are happy with your settings click on the “Set Page Number Button”, the refresh button will
+            <p>Once you are happy with your settings click on the <strong>Set Page Number Button</strong>, the refresh
+                button will
                 return the user to the home page. </p>
             <h3>Download numbered file</h3>
             <p>After the document has been processed, the user will be brought to the download page. Here they can
                 download the numbered Word file. If they do not download the file within two minutes, it will be
+                automatically
                 deleted. Please note that all files will be deleted to ensure space on the server. </p>
             <p><img src="{% static 'images/download.PNG' %}" id="rectangle" class="center"></p>
         </div>

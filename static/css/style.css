@@ -90,6 +90,37 @@ header h1 {
     padding: 40px 40px 40px 40px;
 }
 
+nav {
+    padding-right: 200px;
+    margin-bottom: 0;
+    list-style: none;
+    float: right;
+    display: inline;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    text-align: center;
+    padding: 0 24px;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav li a:hover{
+    color: #0d6eca;
+}
 
 .content {
     width: 968px;
@@ -330,14 +361,14 @@ li:hover {
         font-size: 22px;
     }
 
-
 }
 
-@media screen and (max-width: 900px) {
-    header {
-        padding-bottom: 0;
+@media screen and (max-width: 800px) {
+    nav {
+        display: none;
     }
 }
+
 
 
 @media screen and (max-width: 640px) {
