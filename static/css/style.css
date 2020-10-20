@@ -39,6 +39,23 @@ a {
     color: #003366;
 }
 
+li {
+    text-align: justify;
+    line-height: 2;
+    font-size: 18px;
+    margin-top: 10px;
+    list-style-type: none;
+    max-width: 500px;
+}
+
+li:hover {
+    color: #222222;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+/* Header and Navigation*/
 
 header {
     position: relative;
@@ -65,29 +82,6 @@ header h1 {
     font-family: "High Tower Text", serif;
     font-size: 45px;
 
-}
-
-
-/* Containers */
-.container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 50px 20px 20px 20px;
-    background: #d4d4d4;
-
-}
-
-.main_content {
-    width: 760px;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 40px 40px 40px 40px;
 }
 
 nav {
@@ -118,9 +112,40 @@ nav li a {
     font-weight: bold;
 }
 
-nav li a:hover{
+nav li a:hover {
     color: #0d6eca;
 }
+
+
+/* Containers */
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 20px 20px 20px;
+    background: #d4d4d4;
+
+}
+
+.main_content {
+    width: 760px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px 40px 40px 40px;
+}
+
+.column {
+    flex-direction: column;
+    flex: 1;
+    min-width: 450px;
+    max-width: 500px;
+}
+
 
 .content {
     width: 968px;
@@ -133,7 +158,44 @@ nav li a:hover{
     padding: 40px 40px 40px 40px;
 }
 
-/* Buttons and forms*/
+
+/*Sections*/
+
+#welcome h2, h3 {
+    text-align: center;
+}
+
+
+#download_section {
+    text-align: center;
+
+}
+
+#help_section {
+    text-align: justify;
+}
+
+#help_section h3, p {
+    text-align: justify;
+    margin: 10px 0;
+    line-height: 1.5em;
+}
+
+/*Images*/
+#rectangle {
+    max-width: 90%;
+    display: block;
+    margin: 40px auto;
+}
+
+#square {
+    max-width: 60%;
+    display: block;
+    margin: 40px auto;
+}
+
+
+/*Buttons and Forms*/
 .myLabel {
     border: 1px #3875d7;
     color: white;
@@ -159,10 +221,6 @@ label.myLabel input[type="file"] {
     background: #222222;
 }
 
-#welcome h2, h3 {
-    text-align: center;
-}
-
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -175,43 +233,8 @@ input[type=text], select {
     position: center;
 }
 
-button[type=submit] {
-    background-color: #3875d7;
-    color: white;
-    padding: 14px 20px;
-    margin: 20px 0;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    width: 220px;
-
-}
-
-button[type=submit]:hover {
-    color: #222222;
-}
-
-
-li {
-    text-align: justify;
-    line-height: 2;
-    font-size: 18px;
-    margin-top: 10px;
-    list-style-type: none;
-    max-width: 500px;
-}
-
-li:hover {
-    color: #222222;
-    cursor: pointer;
-    font-weight: bold;
-
-}
-
-#file_name {
-    display: none;
+#buttons {
+    width: 100%;
 }
 
 #restart {
@@ -232,68 +255,47 @@ li:hover {
 
 }
 
-#download_section {
-    text-align: center;
 
+#process {
+    background-color: #3875d7;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    width: 220px;
 }
 
-#help_section {
-    text-align: justify;
+#process:hover {
+    background-color: #222222;
 }
-
-#help_section h3, p {
-    text-align: justify;
-    margin: 10px 0;
-    line-height: 1.5em;
-}
-
-
-#rectangle {
-    max-width: 90%;
-    display: block;
-    margin: 40px auto;
-}
-
-#square {
-    max-width: 60%;
-    display: block;
-    margin: 40px auto;
-}
-
-#buttons {
-    width: 100%;
-    text-align: center;
-}
-
 
 #download_btn {
     background-color: #3875d7;
     color: white;
-    padding: 10px;
-    margin: 60px 0;
+    padding: 14px 20px;
+    margin: 20px 0;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
+    max-width: 300px;
 }
 
 #download_btn:hover {
     background-color: #222222;
-
 }
 
-
 #download_btn a {
-    text-decoration: none;
     color: white;
 }
 
-
-#headings {
-    width: 450px;
-    max-height: 370px;
-    overflow-y: auto;
+#process, #download_btn {
+    display: inline-block;
 }
 
 
@@ -314,12 +316,19 @@ li:hover {
 
 }
 
-#process, #download_btn {
-    display: inline-block;
+/*misc*/
+#file_name {
+    display: none;
 }
 
 #pk {
     display: none;
+}
+
+#headings {
+    width: 450px;
+    max-height: 370px;
+    overflow-y: auto;
 }
 
 #page_settings {
@@ -329,14 +338,6 @@ li:hover {
 #page_settings input, select {
     width: 250px;
 }
-
-.column {
-    flex-direction: column;
-    flex: 1;
-    min-width: 450px;
-    max-width: 500px;
-}
-
 
 /*Media queries*/
 @media screen and (max-width: 1024px) {
@@ -363,12 +364,13 @@ li:hover {
 
 }
 
+
+/*Media Queries*/
 @media screen and (max-width: 800px) {
     nav {
         display: none;
     }
 }
-
 
 
 @media screen and (max-width: 640px) {
