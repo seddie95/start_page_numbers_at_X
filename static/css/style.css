@@ -175,10 +175,13 @@ nav li a:hover {
     text-align: justify;
 }
 
-#help_section h3, p {
+#help_section h3, p  {
     text-align: justify;
     margin: 10px 0;
     line-height: 1.5em;
+}
+#help_section h2{
+    margin-bottom: 20px;
 }
 
 /*Images*/
