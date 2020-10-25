@@ -21,7 +21,7 @@
     {# Set the BaseURL and retrieve csrf token #}
     <script>
         let getUrl = window.location;
-        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split("/")[1];
+        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split("/")[0];
 
         // get the csrf token
         function getCsrf() {

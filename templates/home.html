@@ -8,22 +8,18 @@
 
 
         <div id="welcome">
-            {% if context == 0 %}
-                <h2> No Headings Found! </h2>
-                <h3>Please upload document that contains headings</h3>
-            {% elif context == 1 %}
-                <h2> Difficulty processing file! </h2>
-                <h3>Please upload again or try a new document.</h3>
-            {% elif context == 2 %}
-                <h2> File has been deleted! </h2>
-                <h3>Please upload a new file to be numbered.</h3>
+            {% if messages %}
+                {% for message in messages %}
+                    <h2>{{ message }}</h2>
+                    <h3>Upload a Word Document to be numbered.</h3>
+                {% endfor %}
             {% else %}
                 <h2>Start Page Numbering @ Specific Page</h2>
                 <h3>Select where the page numbering should start in a Word document</h3>
             {% endif %}
 
             <!-- Upload Form-->
-            <form method="post" enctype="multipart/form-data" id="upload_form" action="process/" >
+            <form method="post" enctype="multipart/form-data" id="upload_form" action="process/">
                 {% csrf_token %}
                 <label class="myLabel" title="Upload a file to be numbered">
                     {{ form }}

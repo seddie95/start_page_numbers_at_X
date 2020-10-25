@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, View
+from django.views.generic import View
 from django.http import JsonResponse
 import json
 from .forms import FileForm
 from .models import WordDoc
 from docx_scripts.add_page_numbers import set_page_numbers
 from docx_scripts.headings import get_headings
+from django.contrib import messages
 
 
 class HomeView(View):
@@ -47,13 +48,10 @@ class ProcessView(View):
                     'headings': headings
                 })
             else:
-                # Delete file, pass message and form to homepage
-                context = 0
-                form = FileForm()
+                # Delete file and redirect to homepage with message
                 doc.delete()
-                return render(request, 'home.html', {
-                    'context': context, 'form': form
-                })
+                messages.error(request, 'No Headings Found!')
+                return redirect('home')
 
 
 class DownloadView(View):
@@ -82,9 +80,8 @@ class DownloadView(View):
         else:
             # Return form and message if file could not be numbered
             form = FileForm()
-            return render(request, 'home.html', {
-                'form': form
-            })
+            messages.error(request, 'File could not be numbered!')
+            return redirect('home')
 
 
 class DeleteView(View):
@@ -101,12 +98,8 @@ class FileDeleted(View):
     def get(self, request, *args, **kwargs):
         """Return users to homepage
          after two minutes as file will be deleted. """
-
-        form = FileForm()
-
-        return render(request, 'home.html', {
-            'form': form, 'context': 2
-        })
+        messages.error(request, 'File was Deleted!')
+        return redirect('home')
 
 
 class HelpView(View):
