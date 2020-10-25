@@ -5,6 +5,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "specific_page.settings")
 import django
 
 django.setup()
+from specific_page import settings
 from pages.models import WordDoc
 
 
@@ -58,6 +59,6 @@ def clean_database(delete_time):
 
 if __name__ == "__main__":
     deletion_time = 120
-    path = '../media'
+    path = settings.MEDIA_ROOT
     clean_database(deletion_time)
     cleanup(deletion_time, path)
