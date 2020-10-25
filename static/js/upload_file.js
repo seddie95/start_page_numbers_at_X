@@ -69,6 +69,7 @@ $(document).ready(function () {
         let heading_input = $('#heading_input');
         heading_input.text($(this).text());
         heading_input.val($(this).val());
+        $("#heading_select").val($(this).text());
     });
 });
 
@@ -90,14 +91,14 @@ if (performance.navigation.type === 1) {
 
 //=============================================================================
 //function to inform that file will be deleted after 2 minutes
-$(window).on('load', function () {
-    if (document.URL.includes("process") || document.URL.includes("download")) {
-        setTimeout(function (event) {
-            location.href = '/reupload'
-
-        }, 120000);
-    }
-})
+// $(window).on('load', function () {
+//     if (document.URL.includes("process") || document.URL.includes("download")) {
+//         setTimeout(function (event) {
+//             location.href = '/reupload'
+//
+//         }, 120000);
+//     }
+// })
 
 
 //=============================================================================

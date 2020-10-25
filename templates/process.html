@@ -12,6 +12,8 @@
         <!--  div to hold document headings-->
         <div id="heading_list" class="column">
             <h3>Select Heading to start page numbering from</h3>
+            <label for="position">Page Headers</label>
+            <input id="heading_select" type="text" placeholder="Heading">
             <ul class='scrollbar' id='headings'>
                 {% for key,heading in request.session.items %}
                     {% if key != 'primary_key' %}
@@ -31,8 +33,9 @@
 
                     <input id="pk" name="pk" value="{{ request.session|get_item:"primary_key" }}">
 
-                    <label>Paragraph number of Headings</label>
-                    <input class="readonly" type="text" id="heading_input" placeholder="Heading" name="heading"
+                    {#                    <label>Paragraph number of Headings</label>#}
+                    <input class="readonly" type="text" id="heading_input" placeholder="Heading" autocomplete="off"
+                           name="heading"
                            title="Select the a heading from the list on the left" required
                            oninvalid="setCustomValidity('Please choose a heading from the List!')">
 
@@ -52,9 +55,22 @@
                         <option value="ordinal">1st, 2nd, 3rd, ...</option>
                         <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
                     </select>
+
+                    <label for="numbering">Numbering Style for main section</label>
+                    <select id="number_style" name="style" title="Select the number style for the first section">
+                        <option value="">1, 2, 3,...</option>
+                        <option value="lowerRoman">i, ii, iii,...</option>
+                        <option value="lowerLetter">a, b, c,...</option>
+                        <option value="upperLetter">A, B, C,...</option>
+                        <option value="ordinal">1st, 2nd, 3rd, ...</option>
+                        <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
+                    </select>
                     <div id="buttons">
-                        <button type="submit" id="process" title="Submit file to be numbered">Set Page Numbers</button>
-                        <button class="restart" id="restart" title="Restart whole process"><i class="fa fa-refresh fa-2x"></i></button>
+                        <button type="submit" class="inverted" id="process" title="Submit file to be numbered">Set Page
+                            Numbers
+                        </button>
+                        <button class="restart" id="restart" title="Restart whole process"><i
+                                class="fa fa-refresh fa-2x"></i></button>
                     </div>
                 </form>
             </div>

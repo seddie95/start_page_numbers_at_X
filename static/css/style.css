@@ -1,4 +1,14 @@
 /*Basic element styles*/
+
+.dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.invert {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -175,12 +185,13 @@ nav li a:hover {
     text-align: justify;
 }
 
-#help_section h3, p  {
+#help_section h3, p {
     text-align: justify;
     margin: 10px 0;
     line-height: 1.5em;
 }
-#help_section h2{
+
+#help_section h2 {
     margin-bottom: 20px;
 }
 
@@ -225,11 +236,21 @@ label.myLabel input[type="file"] {
     cursor: pointer;
 }
 
+#heading_select{
+    max-width: 400px
+}
+
+
+select {
+    background-color: #d4d4d4;
+}
+
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
     display: block;
     border: 1px solid #ccc;
+    background-color: #d4d4d4;
     border-radius: 8px;
     box-sizing: border-box;
     font-size: 16px;
@@ -330,13 +351,27 @@ input[type=text], select {
 }
 
 #headings {
-    width: 450px;
-    max-height: 370px;
+    max-width: 400px;
+    min-height: 200px;
+    max-height: 340px;
     overflow-y: auto;
+    background-color: #d4d4d4;
+    color: #4d4d4d;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    margin-top: 8px;
+    padding: 14px 20px;
 }
+
+
+#heading_input {
+    display: none;
+}
+
 
 #page_settings {
     margin-left: 150px;
+
 }
 
 #page_settings input, select {

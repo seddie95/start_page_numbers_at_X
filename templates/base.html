@@ -28,13 +28,25 @@
             return $("input[name='csrfmiddlewaretoken']").val();
         }
     </script>
+<script>
+    document.onkeypress = function (e){
+        e = e|| window.event;
+
+        if(e.keyCode==13){
+            document.documentElement.classList.toggle('dark-mode');
+            document.querySelectorAll('.inverted').forEach((result)=>{
+                result.classList.toggle('invert');
+            })
+        }
+    }
+</script>
 
 </head>
 
 <body>
 <div class="wrapper">
     <header class="header">
-        <h1 class="restart"><a href="/">Numbering <span class="color">@</span></a></h1>
+        <h1 class="restart inverted"><a href="/">Numbering <span class="color">@</span></a></h1>
         <nav>
             <ul>
                 <li><a href="help/">Help</a></li>
