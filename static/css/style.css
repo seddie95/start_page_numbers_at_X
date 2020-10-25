@@ -222,6 +222,7 @@ label.myLabel input[type="file"] {
 
 .myLabel:hover {
     background: #222222;
+    cursor: pointer;
 }
 
 input[type=text], select {
