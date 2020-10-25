@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 import json
@@ -8,13 +8,20 @@ from docx_scripts.add_page_numbers import set_page_numbers
 from docx_scripts.headings import get_headings
 
 
-class UploadView(View):
+class HomeView(View):
     def get(self, request, *args, **kwargs):
         form = FileForm()
 
         return render(request, 'home.html', {
             'form': form
         })
+
+
+class ProcessView(View):
+    def get(self, request, *args, **kwargs):
+        """Return users to homepage if they
+        refresh the page or navigate to /process """
+        return redirect('home')
 
     def post(self, request, *args, **kwargs):
         form = FileForm(request.POST, request.FILES)
@@ -49,16 +56,11 @@ class UploadView(View):
                 })
 
 
-class ProcessView(View):
+class DownloadView(View):
     def get(self, request, *args, **kwargs):
         """Return users to homepage if they
         refresh the page or navigate to /process """
-
-        form = FileForm()
-
-        return render(request, 'home.html', {
-            'form': form
-        })
+        return redirect('home')
 
     def post(self, request, *args, **kwargs):
         # Retrieve settings for page numbering
@@ -93,6 +95,18 @@ class DeleteView(View):
         doc_obj.delete()
 
         return JsonResponse('Removed file from server ', safe=False)
+
+
+class FileDeleted(View):
+    def get(self, request, *args, **kwargs):
+        """Return users to homepage
+         after two minutes as file will be deleted. """
+
+        form = FileForm()
+
+        return render(request, 'home.html', {
+            'form': form, 'context': 2
+        })
 
 
 class HelpView(View):

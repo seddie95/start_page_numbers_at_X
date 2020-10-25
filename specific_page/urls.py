@@ -21,15 +21,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.UploadView.as_view(), name='home'),
+    path('', views.HomeView.as_view(), name='home'),
     path('process/', views.ProcessView.as_view(), name='process'),
+    path('download/', views.DownloadView.as_view(), name='download'),
     path('delete/', views.DeleteView.as_view(), name='delete'),
+    path('reupload/', views.FileDeleted.as_view(), name='reupload'),
     path('help/', views.HelpView.as_view(), name='help'),
     path('404/', views.error_404_view, name='404')
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
 handler404 = 'pages.views.error_404_view'
 

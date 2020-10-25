@@ -26,7 +26,7 @@
             <div id="page_settings">
                 <!-- Page style form-->
                 <h3>Select page numbering settings</h3>
-                <form id="style_form" method="post" action="/process/">
+                <form id="style_form" method="post" action="/download/">
                     {% csrf_token %}
 
                     <input id="pk" name="pk" value="{{ request.session|get_item:"primary_key" }}">

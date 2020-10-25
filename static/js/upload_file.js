@@ -91,24 +91,14 @@ if (performance.navigation.type === 1) {
 //=============================================================================
 //function to inform that file will be deleted after 2 minutes
 $(window).on('load', function () {
-    setTimeout(function (event) {
+    if (document.URL.includes("process") || document.URL.includes("download")) {
+        setTimeout(function (event) {
+            location.href = '/reupload'
 
-        let download_btn = $('#download_btn')
-
-        // Update the text and style of button
-        download_btn.css('background-color', 'gray');
-        download_btn.text('Start Again');
-
-        $('#title_text').html('<h2>File has been deleted!</h2>' +
-            '<h3>Please upload a new file to be numbered.</h3>');
-
-        // Redirect to home when button is clicked
-        download_btn.click(function (event) {
-            event.preventDefault();
-            location.href = '/';
-        })
-    }, 120000);
+        }, 120000);
+    }
 })
+
 
 //=============================================================================
 // Function to only submit headings by clicking on list of headings
