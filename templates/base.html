@@ -28,18 +28,7 @@
             return $("input[name='csrfmiddlewaretoken']").val();
         }
     </script>
-<script>
-    document.onkeypress = function (e){
-        e = e|| window.event;
 
-        if(e.keyCode==13){
-            document.documentElement.classList.toggle('dark-mode');
-            document.querySelectorAll('.inverted').forEach((result)=>{
-                result.classList.toggle('invert');
-            })
-        }
-    }
-</script>
 
 </head>
 
@@ -47,9 +36,14 @@
 <div class="wrapper">
     <header class="header">
         <h1 class="restart inverted"><a href="/">Numbering <span class="color">@</span></a></h1>
+
+        <label class="switch">
+            <input type="checkbox" id="dark_mode">
+            <span class="slider round"></span>
+        </label>
         <nav>
             <ul>
-                <li><a href="help/">Help</a></li>
+                <li><a href="/help/">Help</a></li>
                 <li><a href="/">Home</a></li>
             </ul>
         </nav>
@@ -58,6 +52,44 @@
         {% block body %}
         {% endblock body %}
     </div>
+    <script>
+        let light = true;
+        let myStorage = window.localStorage;
+        let mode = myStorage.getItem('dark_mode');
+
+        function dark_mode() {
+            document.documentElement.classList.toggle('dark-mode');
+            document.querySelectorAll('.inverted').forEach((result) => {
+                result.classList.toggle('invert');
+            });
+        }
+
+
+        if (mode === 'on') {
+            $("#dark_mode").attr('checked', true);
+            light = false;
+            dark_mode();
+        }
+
+
+        $(document).ready(function () {
+            $(".switch").change(function () {
+
+                if (light) {
+                    myStorage.setItem('dark_mode', 'on');
+                    light = false;
+
+                } else {
+                    myStorage.setItem('dark_mode', 'off');
+                    light = true;
+                }
+
+                dark_mode()
+            });
+        })
+
+
+    </script>
 </div>
 </body>
 </html>
