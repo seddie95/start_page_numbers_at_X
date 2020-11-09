@@ -8,36 +8,33 @@
 
 {% block body %}
     <div class="content">
+        <form id="style_form" class="flex-container" method="post" action="/download/">
+            <!--  div to hold document headings-->
+            <div id="heading_list" class="flex left">
+                <h3>Page Headings</h3>
+                <label for="position">Page Headers</label>
+                <input class="readonly"  name="heading" id="heading_select" type="text" placeholder="Heading"
+                       autocomplete="off" required>
+                <ul class='scrollbar' id='headings'>
+                    {% for key,heading in request.session.items %}
+                        {% if key != 'primary_key' %}
+                            <li value="{{ heading }}">{{ key }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
 
-        <!--  div to hold document headings-->
-        <div id="heading_list" class="column">
-            <h3>Select Heading to start page numbering from</h3>
-            <label for="position">Page Headers</label>
-            <input id="heading_select" type="text" placeholder="Heading">
-            <ul class='scrollbar' id='headings'>
-                {% for key,heading in request.session.items %}
-                    {% if key != 'primary_key' %}
-                        <li value="{{ heading }}">{{ key }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
 
-
-        <div class="column">
-            <div id="page_settings">
-                <!-- Page style form-->
-                <h3>Select page numbering settings</h3>
-                <form id="style_form" method="post" action="/download/">
+            <div class="flex right">
+                <div >
+                    <!-- Page style form-->
+                    <h3>Page Numbering settings</h3>
+                    {#                <form id="style_form" method="post" action="/download/">#}
                     {% csrf_token %}
 
                     <input id="pk" name="pk" value="{{ request.session|get_item:"primary_key" }}">
-
-                    {#                    <label>Paragraph number of Headings</label>#}
-                    <input class="readonly" type="text" id="heading_input" placeholder="Heading" autocomplete="off"
-                           name="heading"
-                           title="Select the a heading from the list on the left" required
-                           oninvalid="setCustomValidity('Please choose a heading from the List!')">
+{#                    <input type="text" id="heading_input" name="heading" placeholder="Heading"#}
+{#                           oninvalid="setCustomValidity('Please choose a heading from the List!')">#}
 
                     <label for="position">Page Position</label>
                     <select id="number_position" name="position" title="Select the position of the numbers on the page">
@@ -72,9 +69,10 @@
                         <button class="restart" id="restart" title="Restart whole process"><i
                                 class="fa fa-refresh fa-2x"></i></button>
                     </div>
-                </form>
+
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
 {% endblock body %}

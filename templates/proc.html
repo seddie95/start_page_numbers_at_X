@@ -1,0 +1,735 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Numbering@</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!--    Google font-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&amp;family=Open+Sans:wght@300&amp;display=swap"
+          rel="stylesheet">
+
+    <!-- jQuery javascript urls -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--Local javascript files-->
+    <script src="/static/js/upload_file.js"></script>
+
+
+    <script>
+        let getUrl = window.location;
+        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split("/")[0];
+
+        // get the csrf token
+        function getCsrf() {
+            return $("input[name='csrfmiddlewaretoken']").val();
+        }
+    </script>
+    <style>
+        /*Basic element styles*/
+.dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.invert {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #4d4d4d;
+    background: #d4d4d4
+}
+
+.wrapper {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+
+h2 {
+    text-align: center;
+    color: #4d4d4d;
+    font-weight: bold;
+    font-size: 34px;
+
+}
+
+h3 {
+    text-align: left;
+    color: #4d4d4d;
+    font-size: 22px;
+    margin-bottom: 40px;
+
+}
+
+a {
+    text-decoration: none;
+    color: #003366;
+}
+
+li {
+    text-align: justify;
+    line-height: 2;
+    font-size: 18px;
+    margin-top: 10px;
+    list-style-type: none;
+    max-width: 500px;
+}
+
+li:hover {
+    color: #222222;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+/* Header and Navigation*/
+
+header {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    text-align: left;
+    background: white;
+    color: #4a4a4a;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    cursor: pointer;
+    display: inline;
+    padding-left: 40px;
+}
+
+.color {
+    color: #3875d7;
+    font-family: "High Tower Text", serif;
+    font-size: 45px;
+
+}
+
+nav {
+    padding-right: 100px;
+    margin-bottom: 0;
+    list-style: none;
+    float: right;
+    display: inline;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    text-align: center;
+    padding: 0 24px;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav li a:hover {
+    color: #0d6eca;
+}
+
+
+/* Containers */
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 20px 20px 20px;
+    background: #d4d4d4;
+
+}
+
+.main_content {
+    width: 760px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px 40px 40px 40px;
+}
+
+
+
+
+.content {
+    width: 968px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px 40px 40px 40px;
+}
+
+
+.flex {
+  padding: 10px;
+}
+.flex input,
+.flex textarea {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .flex input,
+  .flex textarea {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 1024px) {
+  .flex-container {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+   }
+
+  .flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction:column;
+
+    padding: 10px;
+  }
+  .left {
+    width: 40%;
+   }
+  .right {
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 60%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  }
+}
+
+
+/*Sections*/
+
+#welcome h2, h3 {
+    text-align: center;
+}
+
+
+#download_section {
+    text-align: center;
+
+}
+
+#help_section {
+    text-align: justify;
+}
+
+#help_section h3, p {
+    text-align: justify;
+    margin: 10px 0;
+    line-height: 1.5em;
+}
+
+#help_section h2 {
+    margin-bottom: 20px;
+}
+
+/*Images*/
+#rectangle {
+    max-width: 90%;
+    display: block;
+    margin: 40px auto;
+}
+
+#square {
+    max-width: 60%;
+    display: block;
+    margin: 40px auto;
+}
+
+
+/*Buttons and Forms*/
+.myLabel {
+    border: 1px #3875d7;
+    color: white;
+    background-color: #3875d7;
+    padding: 20px 30px;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    width: 35%;
+    margin: auto;
+}
+
+
+label.myLabel input[type="file"] {
+    display: none;
+
+}
+
+.myLabel:hover {
+    background: #222222;
+    cursor: pointer;
+}
+
+#heading_select {
+    max-width: 400px;
+}
+
+
+select {
+    background-color: #d4d4d4;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    display: block;
+    border: 1px solid #ccc;
+    background-color: #d4d4d4;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 8px 0 15px;
+    position: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+#buttons {
+    width: 100%;
+}
+
+#restart {
+    background-color: white;
+    color: #2e0303;
+    padding: 14px 20px;
+    margin: 60px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    max-width: 100px;
+}
+
+#restart:hover {
+    color: #e31010;
+
+}
+
+
+#process {
+    background-color: #3875d7;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 220px;
+}
+
+#process:hover {
+    background-color: #222222;
+}
+
+#download_btn {
+    background-color: #3875d7;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    max-width: 300px;
+}
+
+#download_btn:hover {
+    background-color: #222222;
+}
+
+#download_btn a {
+    color: white;
+}
+
+#process, #download_btn {
+    display: inline-block;
+}
+
+
+/*Toggle button*/
+.switch {
+    display: none;
+}
+
+.switch:not(*:root) {
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: 60px;
+    height: 34px;
+    margin: 20px 60px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #003366;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider:after {
+    background-color: white;
+}
+
+/*Scrollbar style*/
+.scrollbar::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #d4d4d4;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #787878;
+
+}
+
+/*misc*/
+#file_name {
+    display: none;
+}
+
+#pk {
+    display: none;
+}
+
+#headings {
+    max-width: 400px;
+    min-height: 200px;
+    max-height: 340px;
+    overflow-y: auto;
+    background-color: #d4d4d4;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    margin-top: 8px;
+
+}
+
+#headings li {
+    padding-left: 15px;
+    border-bottom: 1px solid #545454;
+}
+
+
+#heading_input {
+    /*display: none;*/
+}
+
+
+#page_settings {
+    margin-left: 150px;
+
+}
+
+#page_settings input, select {
+    width: 250px;
+}
+
+/*Media queries*/
+@media screen and (max-width: 1024px) {
+
+    h2 {
+        font-size: 28px;
+    }
+
+    #page_settings {
+        margin: 40px 0 0 0;
+    }
+
+    .content, .main_content {
+        width: 500px;
+    }
+
+    #headings {
+        width: 600px;
+    }
+
+    .myLabel {
+        font-size: 22px;
+    }
+
+}
+
+
+/*Media Queries*/
+@media screen and (max-width: 800px) {
+    nav {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 640px) {
+    .content, .main_content {
+        width: 400px;
+    }
+
+    #headings {
+        width: 450px;
+    }
+
+    .myLabel {
+        font-size: 16px;
+    }
+
+
+}
+
+@media screen and (max-width: 520px) {
+    h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .content, .main_content {
+        width: 350px;
+    }
+
+    #headings {
+        width: 350px;
+    }
+
+    .column {
+        min-width: 380px;
+
+    }
+
+    .myLabel {
+        font-size: 14px;
+    }
+
+
+}
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <h1 class="restart inverted"><a href="/">Numbering <span class="color">@</span></a></h1>
+
+        <label class="switch" title="Set dark or light mode">
+            <input type="checkbox" id="dark_mode">
+            <span class="slider round"></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="/help/">Help</a></li>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+
+        <div class="content">
+            <form class="flex-container" id="style_form" method="post" action="/download/">
+                <!--  div to hold document headings-->
+                <div id="heading_list" class="flex-wrapper">
+                    <h3>Select Heading to start page numbering from</h3>
+                    <label for="position">Page Headers</label>
+                    <input class="readonly" name="heading" id="heading_select" type="text" placeholder="Heading"
+                           autocomplete="off" required="">
+                    <ul class="scrollbar" id="headings">
+                        <li value="0">Chapter 1</li>
+                        <li value="4">Chapter 2</li>
+                        <li value="15">Chapter 3</li>
+                    </ul>
+                </div>
+
+
+                    <div id="page_settings">
+                        <!-- Page style form-->
+                        <h3>Select page numbering settings</h3>
+
+                        <input type="hidden" name="csrfmiddlewaretoken"
+                               value="fl1saoZJgH5ZH7hfeHIUWYeFILEFnKJWtNtALpLAUb9pP7gqxQpnsZr3HtV4LwKV">
+
+                        <input id="pk" name="pk" value="515">
+
+
+                        <label for="position">Page Position</label>
+                        <select id="number_position" name="position"
+                                title="Select the position of the numbers on the page">
+                            <option value="left">Left</option>
+                            <option value="center">Center</option>
+                            <option value="right">Right</option>
+
+                        </select>
+                        <label for="numbering">Numbering Style for first section</label>
+                        <select id="number_style" name="style" title="Select the number style for the first section">
+                            <option value="">1, 2, 3,...</option>
+                            <option value="lowerRoman">i, ii, iii,...</option>
+                            <option value="lowerLetter">a, b, c,...</option>
+                            <option value="upperLetter">A, B, C,...</option>
+                            <option value="ordinal">1st, 2nd, 3rd, ...</option>
+                            <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
+                        </select>
+
+                        <label for="numbering">Numbering Style for main section</label>
+                        <select id="number_style" name="style" title="Select the number style for the first section">
+                            <option value="">1, 2, 3,...</option>
+                            <option value="lowerRoman">i, ii, iii,...</option>
+                            <option value="lowerLetter">a, b, c,...</option>
+                            <option value="upperLetter">A, B, C,...</option>
+                            <option value="ordinal">1st, 2nd, 3rd, ...</option>
+                            <option value="numberInDash">- 1 -, - 2 -, - 3 -, ...</option>
+                        </select>
+                        <div id="buttons">
+                            <button type="submit" class="inverted" id="process" title="Submit file to be numbered">Set
+                                Page
+                                Numbers
+                            </button>
+                            <button class="restart" id="restart" title="Restart whole process"><i
+                                    class="fa fa-refresh fa-2x"></i></button>
+                        </div>
+
+
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <script>
+        let light = true;
+        let myStorage = window.localStorage;
+        let mode = myStorage.getItem('dark_mode');
+
+        function dark_mode() {
+            document.documentElement.classList.toggle('dark-mode');
+            document.querySelectorAll('.inverted').forEach((result) => {
+                result.classList.toggle('invert');
+            });
+        }
+
+
+        if (mode === 'on') {
+            $("#dark_mode").attr('checked', true);
+            light = false;
+            dark_mode();
+        }
+
+
+        $(document).ready(function () {
+            $(".switch").change(function () {
+
+                if (light) {
+                    myStorage.setItem('dark_mode', 'on');
+                    light = false;
+
+                } else {
+                    myStorage.setItem('dark_mode', 'off');
+                    light = true;
+                }
+
+                dark_mode()
+            });
+        })
+
+
+    </script>
+</div>
+
+</body>
+</html>

@@ -69,7 +69,9 @@ $(document).ready(function () {
         let heading_input = $('#heading_input');
         heading_input.text($(this).text());
         heading_input.val($(this).val());
+
         $("#heading_select").val($(this).text());
+        $("#heading_select").text($(this).val());
     });
 });
 
@@ -109,3 +111,11 @@ $(document).ready(function () {
     });
 });
 
+
+$(document).ready(function () {
+    $('#style_form').submit(function () {
+        $('#heading_select').val(function () {
+            return $(this).text();
+        });
+    })
+});
