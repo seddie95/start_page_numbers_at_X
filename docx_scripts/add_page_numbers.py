@@ -101,6 +101,7 @@ def set_page_numbers(specs):
     paragraph_number = int(specs['heading'][0])
     position = specs['position'][0]
     style = specs['style'][0]
+    style_main = specs['style_main'][0]
 
     # Open existing and find last paragraph before section break
     try:
@@ -117,7 +118,7 @@ def set_page_numbers(specs):
 
             else:
                 sect = doc.sections[0]._sectPr
-                pg_num_type = set_page_number_type()
+                pg_num_type = set_page_number_type(style_main)
                 sect.append(pg_num_type)
 
                 # add numbers starting at i
