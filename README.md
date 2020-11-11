@@ -16,7 +16,7 @@ Before using this application you will be required to have a word document in .d
 
 
 <p align="center">
-  <img width="750"  src="start_page_numbers_at_X/static/images/select_heading.PNG">
+  <img width="750"  src="static/images/select_heading.PNG">
 </p>
 
 The first option that is required is to choose the heading  as seen above on the left hand side, which will start the new section. This will place the paragraph number corresponding to the selected heading into the input box with the label “Paragraph number of Headings”
