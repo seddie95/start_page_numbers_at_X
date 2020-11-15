@@ -66,63 +66,101 @@ li:hover {
 
 /* Header and Navigation*/
 
-header {
-    position: relative;
-    display: block;
-    max-width: 100%;
-    text-align: left;
-    background: white;
-    color: #4a4a4a;
+
+nav {
+    width: 100vw;
+    background-color: #ffff;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    z-index: 1;
     padding-top: 10px;
-    padding-bottom: 10px;
+    justify-content: space-evenly;
 }
 
-header h1 {
+nav h1 {
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
     font-size: 40px;
     cursor: pointer;
-    display: inline;
-    padding-left: 40px;
+    display: flex;
+    padding-left: 3vw;
+}
+
+
+/*Styling Links*/
+.nav-links {
+    display: flex;
+    list-style: none;
+    width: 20vw;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    margin: 0px 2vw;
+}
+
+.nav-links li a:hover {
+    color: #61DAFB;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li a::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0%;
+    background-color: #072c5d;
+    position: absolute;
+    transition: all ease-in-out 250ms;
+    /*margin: 0 0 0 10%;*/
+}
+
+.nav-links li a:hover::before {
+    width: 80%;
 }
 
 .color {
     color: #3875d7;
     font-family: "High Tower Text", serif;
     font-size: 45px;
-
-}
-
-nav {
-    padding-right: 100px;
-    margin-bottom: 0;
-    list-style: none;
-    float: right;
     display: inline;
+
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+/*Styling Buttons*/
+
+/*Styling Hamburger Icon*/
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background: #242424;
+    margin: 5px;
+    transition: all 0.3s ease;
 }
 
-nav li {
-    float: right;
+.hamburger {
+    display: none;
 }
 
-nav li a {
-    display: block;
-    text-align: center;
-    padding: 0 24px;
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: bold;
+
+/*Animating Hamburger Icon on Click*/
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-nav li a:hover {
-    color: #0d6eca;
+.toggle .line2 {
+    transition: all 0.7s ease;
+    width: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 
@@ -146,6 +184,7 @@ nav li a:hover {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 40px 40px 40px 40px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -157,6 +196,7 @@ nav li a:hover {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 40px 40px 40px 40px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -253,7 +293,7 @@ figcaption {
     text-align: center;
     display: block;
     justify-content: center;
-    width: 35%;
+    width: 40%;
     margin: auto;
 }
 
@@ -365,7 +405,8 @@ input[type=text], select {
 
 .switch:not(*:root) {
     position: relative;
-    display: inline-block;
+    /*display: inline-block;*/
+    display: flex;
     float: right;
     width: 60px;
     height: 34px;
@@ -397,7 +438,7 @@ input[type=text], select {
     width: 26px;
     left: 14px;
     bottom: 7px;
-    background-color: transparent;
+    /*background-color: transparent;*/
     -webkit-transition: .5s;
     transition: .5s;
     box-shadow: -8px 3px 0px 0px #fff;
@@ -517,14 +558,6 @@ input:checked + .slider:before {
 }
 
 
-/*Media Queries*/
-@media screen and (max-width: 800px) {
-    nav {
-        display: none;
-    }
-}
-
-
 @media screen and (max-width: 640px) {
     .content, .main_content {
         width: 400px;
@@ -545,24 +578,113 @@ input:checked + .slider:before {
 
 }
 
+
+@media screen and (max-width: 800px) {
+    nav {
+        z-index: 3;
+        justify-content: start;
+
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        padding-top: 15px;
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+
+    .nav-links {
+        position: fixed;
+        background: #3c3c3c;
+        height: 20vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 90% -300%);
+        -webkit-clip-path: circle(50px at 90% -300%);
+        transition: all 1.8s ease-out;
+        pointer-events: none;
+        z-index: 1;
+
+    }
+
+    .nav-links a {
+        color: white;
+    }
+
+    .nav-links.open {
+        /*clip-path: circle(1000px at 90% -30%);*/
+        /*-webkit-clip-path: circle(1000px at 90% -30%);*/
+        clip-path: circle(1000px at 110% -30%);
+        -webkit-clip-path: circle(1000px at 110% -30%);
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .nav-links li:nth-child(1) {
+        transition: all 0.5s ease 0.2s;
+    }
+
+    .nav-links li:nth-child(2) {
+        transition: all 0.5s ease 0.4s;
+    }
+
+    li.fade {
+        opacity: 1;
+    }
+
+    .switch:not(*:root) {
+        display: none;
+
+    }
+}
+
+
 @media screen and (max-width: 520px) {
+    nav{
+        padding:4px 0 10px 0px;
+    }
+    nav h1 {
+        font-size: 34px;
+    }
+
+    .color {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
     h3 {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 20px;
+
+    }
+
+    .container {
+        padding: 30px 0;
     }
 
     .content, .main_content {
-        width: 350px;
+        width: 300px;
     }
+
+
+    #heading_select {
+        width: 250px
+    }
+
 
     #headings {
-        width: 350px;
+        width: 250px;
     }
 
-    .column {
-        min-width: 380px;
-
-    }
 
     .myLabel {
         font-size: 14px;
@@ -574,6 +696,12 @@ input:checked + .slider:before {
 
     .right {
         width: 90%;
+    }
+
+    #process {
+        width: 185px;
+        font-size: 16px;
+
     }
 
 
