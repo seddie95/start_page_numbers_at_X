@@ -11,12 +11,14 @@ The word documents are then edited using the  [python-docx](https://python-docx.
 library to manipulate the word documents XML files.  The numbered word files are then made available for
 download by the web application.
 
+A live version of this application can be found at https://numberingat.com/
+
 ## Application Instructions 
 Before using this application you will be required to have a word document in .docx format. Word documents with Heading 1 headings are required, as it is not possible to determine the page numbers in python docx as it will change when rendered.
 
 
 <p align="center">
-  <img width="750"  src="images/page_settings.PNG">
+  <img width="750"  src="static/images/select_heading.PNG">
 </p>
 
 The first option that is required is to choose the heading  as seen above on the left hand side, which will start the new section. This will place the paragraph number corresponding to the selected heading into the input box with the label “Paragraph number of Headings”
