@@ -52,7 +52,7 @@ li {
     text-align: justify;
     line-height: 2;
     font-size: 18px;
-    margin-top: 10px;
+    padding-top: 10px;
     list-style-type: none;
     max-width: 500px;
 }
@@ -94,12 +94,13 @@ nav h1 {
     width: 20vw;
     justify-content: space-evenly;
     align-items: center;
-    text-transform: uppercase;
+
 }
 
 .nav-links li a {
     text-decoration: none;
     margin: 0px 2vw;
+    font-size: 26px;
 }
 
 .nav-links li a:hover {
@@ -295,6 +296,7 @@ figcaption {
     justify-content: center;
     width: 40%;
     margin: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -306,6 +308,7 @@ label.myLabel input[type="file"] {
 .myLabel:hover {
     background: #222222;
     cursor: pointer;
+    /*width: 20%;*/
 }
 
 #heading_select {
@@ -329,6 +332,12 @@ input[type=text], select {
     margin: 8px 0 15px;
     position: center;
     font-family: 'Open Sans', sans-serif;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+select:hover {
+    cursor: pointer;
+    background-color: #b9b9b9;
 }
 
 
@@ -347,6 +356,7 @@ input[type=text], select {
     font-size: 16px;
     font-weight: bold;
     max-width: 100px;
+
 }
 
 #restart:hover {
@@ -366,6 +376,7 @@ input[type=text], select {
     font-size: 18px;
     font-weight: bold;
     width: 220px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 #process:hover {
@@ -383,6 +394,7 @@ input[type=text], select {
     font-size: 30px;
     font-weight: bold;
     max-width: 300px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 #download_btn:hover {
@@ -411,6 +423,7 @@ input[type=text], select {
     width: 60px;
     height: 34px;
     margin: 20px 60px;
+
 }
 
 .switch input {
@@ -501,6 +514,7 @@ input:checked + .slider:before {
     border: 1px solid #d4d4d4;
     border-radius: 10px;
     margin-top: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -510,10 +524,14 @@ input:checked + .slider:before {
 }
 
 
-#heading_input {
-    /*display: none;*/
+#headings li:hover {
+    background-color: #b9b9b9;
 }
 
+
+#style_form h3 {
+    text-align: left;
+}
 
 #page_settings {
     margin-left: 150px;
@@ -557,33 +575,10 @@ input:checked + .slider:before {
 
 }
 
-
-@media screen and (max-width: 640px) {
-    .content, .main_content {
-        width: 400px;
-    }
-
-    #headings {
-        width: 350px;
-    }
-
-    #heading_select {
-        width: 350px;
-    }
-
-    .myLabel {
-        font-size: 16px;
-    }
-
-
-}
-
-
 @media screen and (max-width: 800px) {
     nav {
         z-index: 3;
         justify-content: start;
-
     }
 
     .hamburger {
@@ -642,13 +637,38 @@ input:checked + .slider:before {
         display: none;
 
     }
+
+    #style_form h3 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .content, .main_content {
+        width: 400px;
+    }
+
+    #headings {
+        width: 350px;
+    }
+
+    #heading_select {
+        width: 350px;
+    }
+
+    .myLabel {
+        font-size: 16px;
+    }
+
+
 }
 
 
 @media screen and (max-width: 520px) {
-    nav{
-        padding:4px 0 10px 0px;
+    nav {
+        padding: 4px 0 10px 0px;
     }
+
     nav h1 {
         font-size: 34px;
     }
@@ -701,6 +721,24 @@ input:checked + .slider:before {
     #process {
         width: 185px;
         font-size: 16px;
+
+    }
+
+    #rectangle {
+        max-width: 300px;
+        display: block;
+        margin: 5px auto;
+    }
+
+    #square {
+        max-width: 300px;
+        display: block;
+        margin: 0px auto;
+    }
+
+    figcaption {
+        font-size: 14px;
+        text-align: left;
 
     }
 
